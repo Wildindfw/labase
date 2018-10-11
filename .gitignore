@@ -1,0 +1,12 @@
+cache/backend/
+cache/frontend/
+tmp/logs/
+media/videos/tmb/
+media/videos/vid/
+media/videos/h264/
+media/photos/
+media/videos/m3u8/
+media/albums/
+
+include/config.db.php
+include/config.paths.php

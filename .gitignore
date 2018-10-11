@@ -10,3 +10,7 @@ media/albums/
 
 include/config.db.php
 include/config.paths.php
+.settings/
+.buildpath
+.project
+composer.json

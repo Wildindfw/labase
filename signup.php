@@ -680,6 +680,10 @@ switch ($_SESSION['language']) {
 }
 
 unset($_SESSION['fb_signup_email']);
+
+$categories     = get_categories();
+$smarty->assign('categories',$categories);
+
 $smarty->assign('errors',$errors);
 $smarty->assign('err',$err);
 $smarty->assign('messages',$messages);
@@ -689,10 +693,18 @@ $smarty->assign('signup', $signup);
 $smarty->assign('self_title', $seo['signup_title']);
 $smarty->assign('self_description', $seo['signup_desc']);
 $smarty->assign('self_keywords', $seo['signup_keywords']);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('signup.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

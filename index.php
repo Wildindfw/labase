@@ -25,6 +25,10 @@ $sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumb
 $rs             = $conn->execute($sql);
 $recent_videos  = $rs->getrows();
 
+$categories     = get_categories();
+$smarty->assign('category',0);
+$smarty->assign('categories',$categories);
+
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'home');
@@ -35,11 +39,20 @@ $smarty->assign('recent_videos', $recent_videos);
 $smarty->assign('self_title', $seo['index_title']);
 $smarty->assign('self_description', $seo['index_desc']);
 $smarty->assign('self_keywords', $seo['index_keywords']);
-$smarty->display('header.tpl');
+
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
+
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('index.tpl');
-$smarty->display('footer.tpl');
-
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

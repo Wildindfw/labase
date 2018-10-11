@@ -133,6 +133,7 @@ $self_title         = $title . $seo['videos_title'];
 $self_description   = $title . $seo['videos_desc'];
 $self_keywords      = $title . $seo['videos_keywords'];
 
+
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'videos');
@@ -150,10 +151,18 @@ $smarty->assign('title', $title);
 $smarty->assign('self_title', $self_title);
 $smarty->assign('self_description', $self_description);
 $smarty->assign('self_keywords', $self_keywords);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('videos.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

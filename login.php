@@ -67,10 +67,19 @@ $smarty->assign('submenu', '');
 $smarty->assign('self_title', $seo['login_title']);
 $smarty->assign('self_description', $seo['login_desc']);
 $smarty->assign('self_keywords', $seo['login_keywords']);
-$smarty->display('header.tpl');
+
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('login.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

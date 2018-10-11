@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row ">
 	<div class="col-sm-6">
 		<ul class="list-unstyled m-l-30">
 			<li><i class="fa fa-film m-r-10 text-white m-b-15"></i>Watch Videos</li>

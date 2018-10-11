@@ -1,6 +1,7 @@
 <?php
 define('_VALID', true);
 require 'include/config.php';
+require 'include/function_global.php';
 require 'classes/filter.class.php';
 require 'classes/validation.class.php';
 require 'include/function_smarty.php';
@@ -92,16 +93,28 @@ if ( isset($_POST['submit_confirm']) ) {
     }
 }
 
+$categories     = get_categories();
+$smarty->assign('categories',$categories);
+
+
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'home');
 $smarty->assign('self_title', $seo['confirm_title']);
 $smarty->assign('self_description', $seo['confirm_desc']);
 $smarty->assign('self_keywords', $seo['confirm_keywords']);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('confirm.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

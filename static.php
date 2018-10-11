@@ -37,14 +37,27 @@ switch ( $page ) {
 
 $self_title = ( isset($self_title) ) ? $self_title. ' - ' .$config['site_name'] : $config['site_name'];
 
+$categories     = get_categories();
+$smarty->assign('categories',$categories);
+
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'home');
 $smarty->assign('self_title', $self_title);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
+
+
 $smarty->display($template. '.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

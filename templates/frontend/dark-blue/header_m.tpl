@@ -53,8 +53,11 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
+	<script src="{$relative_tpl}/js/header_m.js"></script>
+	
+	
 	<link href="{$relative_tpl}/css/bootstrap.css" rel="stylesheet">
-	<link href="{$relative_tpl}/css/style.css" rel="stylesheet">
+	<link href="{$relative_tpl}/css/style_m.css" rel="stylesheet">
 	<link href="{$relative_tpl}/css/responsive.css" rel="stylesheet">
 	<link href="{$relative_tpl}/css/font-awesome.min.css" rel="stylesheet">		
 	<link href="{$relative_tpl}/css/colors.css" rel="stylesheet">
@@ -270,60 +273,41 @@
 </div>
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="top: 0; position: relative; ">
 <!-- <div class="navbar navbar-inverse" role="navigation"> -->
-	<div class="container">		
-		<div class="navbar-header">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
-				<span class="sr-only">Toggle navigation</span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-				<span class="icon-bar"></span>
-			</button>
-			<a class="navbar-brand" href="{$relative}/"><img src="{$relative}/images/logo/logo.png"></a> 
+	<div class="container" style="position: relative; padding: 0;">
+		<div class="menu-btn sendwich" id="menu-btn"><span></span></div>
+		<div class="navbar-bd">
+			<a class="nav-logo" href="{$relative}/">
+				<img src="{$relative}/images/logo/logo.png">
+			</a>					
 		</div>
-		<div class="navbar-collapse collapse navbar-inverse-collapse">
-			<ul class="nav navbar-nav navbar-right">
-				{if $video_module == '1'}<li{if $menu == 'videos'} class="active"{/if}><a href="{$relative}/videos">{translate c='menu.videos'}</a></li>{/if}
-				{if $photo_module == '1'}<li{if $menu == 'albums'} class="active"{/if}><a href="{$relative}/albums">{translate c='menu.photos'}</a></li>{/if}
-				{if $game_module == '1'}<li{if $menu == 'games'} class="active"{/if}><a href="{$relative}/games">{translate c='menu.games'}</a></li>{/if}
-				
-				<li class="dropdown visible-sm hidden-xs hidden-md hidden-lg">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">{translate c='menu.more'} <b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							{if $blog_module == '1'}<li{if $menu == 'blogs'} class="active"{/if}><a href="{$relative}/blogs">{translate c='menu.blogs'}</a></li>{/if}
-							<li{if $menu == 'categories'} class="active"{/if}>{if $video_module == '1'}<a href="{$relative}/categories">{elseif $photo_module == '1'}<a href="{$relative}/categories?s=a">{else}<a href="{$relative}/categories?s=g">{/if}{translate c='menu.categories'}</a></li>
-							<li{if $menu == 'community'} class="active"{/if}><a href="{$relative}/community">{translate c='menu.community'}</a></li>
-						</ul>
-				</li>
-				
-				{if $blog_module == '1'}<li{if $menu == 'blogs'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/blogs">{translate c='menu.blogs'}</a></li>{/if}
-				<li{if $menu == 'categories'} class="active hidden-sm"{else} class="hidden-sm"{/if}>{if $video_module == '1'}<a href="{$relative}/categories">{elseif $photo_module == '1'}<a href="{$relative}/categories?s=a">{else}<a href="{$relative}/categories?s=g">{/if}{translate c='menu.categories'}</a></li>
-				<li{if $menu == 'community'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/community">{translate c='menu.community'}</a></li>
-				<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-				<ul class="dropdown-menu search-dropdown-menu">
-					<form class="form-inline" name="search" id="search_form" method="get" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-						<div class="input-group">
-						<input type="text" class="form-control" placeholder="{t c='ajax.search'}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query}{/if}">
-						<span class="search-select input-group-addon">
-							<select class="form-control" id="search_type">
-								<option value="videos"{if isset($search_type) && $search_type == 'videos'} selected="yes"{/if}>{translate c='global.videos'}</option>
-								{if $photo_module == '1'}<option value="photos"{if isset($search_type) && $search_type == 'photos'} selected="yes"{/if}>{translate c='global.photos'}</option>{/if}
-								{if $game_module == '1'}<option value="games"{if isset($search_type) && $search_type == 'games'} selected="yes"{/if}>{translate c='global.games'}</option>{/if}
-								<option value="users"{if isset($search_type) && $search_type == 'users'} selected="yes"{/if}>{translate c='global.users'}</option>
-							</select>		
-						</span>
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-						</span>
-						</div>
-					</form>
-				</ul>
-				</li>
-				<li><button type="button" class="btn btn-primary navbar-btn m-l-15 m-r-15" onclick="location.href='{$relative}/upload'">{translate c='menu.upload'}</button></li>						
-			</ul>
-			
-		</div><!--/.nav-collapse -->
+		<div class="search-btn" id="search-btn"><span></span></div>		
+		
+		<div id="panel-group" class="panel-group" style="padding: 0;">
+            <nav class="responsive-menu">
+                <ul>
+                    <li {if $category == "0"}class="active"{else}{/if}>
+                    	<a href="/">首页</a>
+                    </li>
+                    {section name=i loop=$categories}
+                    <li {if $category == $categories[i].CHID}class="active"{else}{/if}>
+					<a href="{url base=videos/`$categories[i].slug` strip='c' value=''}" >
+						{$categories[i].name}
+					</a>
+					</li>
+					{/section}
+                </ul>
+            </nav>
+            <div class="search">
+				<form class="form1" action="/search/videos" method="get" name="search" id="search_form">
+					<input type="text" name="search_query" value="" placeholder="请输入搜索内容">
+					<input type="submit" value="">
+				</form>
+			</div>                        
+		</div>
+		
     </div>
 </div>
+
 <div id="wrapper">
+
 

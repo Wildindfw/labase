@@ -241,6 +241,11 @@ if ($new_permisions['watch_normal_videos'] == 0) {
 	}
 
 }
+
+$categories     = get_categories();
+$smarty->assign('categories',$categories);
+
+
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'videos');
@@ -269,10 +274,18 @@ $smarty->assign('end_num', $end_num);
 $smarty->assign('is_friend', $is_friend);
 $smarty->assign('guest_limit', $guest_limit);
 $smarty->assign('new_permisions', $new_permisions);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('video.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

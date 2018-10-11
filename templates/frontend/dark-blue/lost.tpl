@@ -25,7 +25,7 @@
 		</div>
 		</div>
 		<div class="col-md-6">
-			<div class="well bs-component">
+			<div class="well bs-component static-whatis">
 				<legend>{t c='global.what_is' s=$site_name}</legend>
 				{include file='static/whatis.tpl'}
 			</div>

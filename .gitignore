@@ -7,6 +7,8 @@ media/videos/h264/
 media/photos/
 media/videos/m3u8/
 media/albums/
+.idea/
+siteadmin/modules/index/dashboard.php
 
 include/config.db.php
 include/config.paths.php

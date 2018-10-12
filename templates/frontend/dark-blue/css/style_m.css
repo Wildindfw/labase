@@ -1285,6 +1285,7 @@ transition-timing-function: linear;
 
 @media (max-width: 600px){
 	.static-whatis{ display: none;}
+	
 }
 
 .header{ position: relative; height: 50px; background: #FFFFFF; border-bottom: 2px solid #e20055;}

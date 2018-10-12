@@ -1,6 +1,7 @@
 <?php
 define('_VALID', true);
 require 'include/config.php';
+require 'include/function_global.php';
 require 'include/function_smarty.php';
 
 $s              = ( isset($_GET['s']) && ($_GET['s'] == 'a' or $_GET['s'] == 'g') ) ? $_GET['s'] : $s;
@@ -66,7 +67,7 @@ else {
 	$smarty->assign('videos', $videos);
 	$smarty->assign('section', "v");
 }
-
+$smarty->assign('pageVideos','on');
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'categories');
@@ -75,10 +76,18 @@ $smarty->assign('categories', $categories);
 $smarty->assign('self_title', $seo['categories_title']);
 $smarty->assign('self_description', $seo['categories_desc']);
 $smarty->assign('self_keywords', $seo['categories_keywords']);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('categories.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

@@ -25,7 +25,7 @@
 		<span class="icon iconfont icon-shouye"></span>
 		<p>首页</p>
 	</a>
-	<a href="{$relative}/videos" class="{$pageVideos}">
+	<a href="{$relative}/categories" class="{$pageVideos}">
 		<span class="icon iconfont icon-video"></span>
 		<p>视频</p>
 	</a>

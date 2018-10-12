@@ -42,7 +42,9 @@
 		<p>加入VIP</p>
 	</a>
 </div>
+
  </div>
+ <script type="text/javascript" src="{$relative_tpl}/js/common_m.js"></script>
     <script src="{$relative_tpl}/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{$relative_tpl}/js/jquery.rotator-0.2.js"></script>
     <script type="text/javascript" src="{$relative_tpl}/js/jquery.avs-0.2.js"></script>	

@@ -174,16 +174,17 @@
 		</a>
 	</div>	
 	<div class="header-signup">
-		
+		{if isset($smarty.session.uid)}
+		<a href="{$relative}/upload/photo">
+			<i class="icon iconfont icon-ziyuan"></i>
+		</a>
+		<span>|</span>
+		<a href="{$relative}/logout">退出</a>		
+		{else}
 		<a data-toggle="modal" href="#login-modal">登录</a>
 		<span>|</span>
 		<a href="{$relative}/signup">注册</a>
-		
-		<!--<a href="{$relative}/upload/photo">
-			<i class="icon iconfont icon-ziyuan"></i>
-		</a>-->
-			
-		
+		{/if}		
 	</div>
 	<div class="header-search">
 		<form action="/search/videos" method="get" name="search" id="search_form">

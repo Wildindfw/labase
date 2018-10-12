@@ -17,9 +17,32 @@
 	
 </div>
 </div>
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+<link href="{$relative_tpl}/iconfont/iconfont.css" rel="stylesheet">
+<div>
+<div style="height: 60px;"></div>
+<div class="weui-tabbar">
+	<a href="{$relative}/" class="{$pageHome}">
+		<span class="icon iconfont icon-shouye"></span>
+		<p>首页</p>
+	</a>
+	<a href="{$relative}/videos" class="{$pageVideos}">
+		<span class="icon iconfont icon-video"></span>
+		<p>视频</p>
+	</a>
+	<a href="{$relative}/albums" class="{$pageAlbums}">
+		<span class="icon iconfont icon-tupian"></span>
+		<p>图片</p>
+	</a>
+	<a>
+		<span class="icon iconfont icon-tubiao1shuxiaoshuo"></span>
+		<p>小说</p>
+	</a>
+	<a>
+		<span class="icon iconfont icon-VIP"></span>
+		<p>加入VIP</p>
+	</a>
+</div>
+ </div>
     <script src="{$relative_tpl}/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{$relative_tpl}/js/jquery.rotator-0.2.js"></script>
     <script type="text/javascript" src="{$relative_tpl}/js/jquery.avs-0.2.js"></script>	

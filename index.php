@@ -25,6 +25,9 @@ $sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumb
 $rs             = $conn->execute($sql);
 $recent_videos  = $rs->getrows();
 
+
+$smarty->assign('pageHome','on');
+
 $categories     = get_categories();
 $smarty->assign('category',0);
 $smarty->assign('categories',$categories);

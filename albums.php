@@ -124,6 +124,8 @@ $self_title         = $title . $seo['albums_title'];
 $self_description   = $title. ' '.$lang['global.albums'].' - ' .$config['site_name'];
 $self_keywords      = $title. ' '.$lang['global.albums'].' '.$config['meta_keywords'];
 
+$smarty->assign('pageAlbums','on');
+
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'albums');
@@ -142,10 +144,18 @@ $smarty->assign('title', $title);
 $smarty->assign('self_title', $self_title);
 $smarty->assign('self_description', $self_description);
 $smarty->assign('self_keywords', $self_keywords);
-$smarty->display('header.tpl');
+if(is_mobile()){
+    $smarty->display('header_m.tpl');
+}else{
+    $smarty->display('header.tpl');
+}
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
 $smarty->display('albums.tpl');
-$smarty->display('footer.tpl');
+if(is_mobile()){
+    $smarty->display('footer_m.tpl');
+}else{
+    $smarty->display('footer.tpl');
+}
 $smarty->gzip_encode();
 ?>

@@ -133,6 +133,7 @@ $self_title         = $title . $seo['videos_title'];
 $self_description   = $title . $seo['videos_desc'];
 $self_keywords      = $title . $seo['videos_keywords'];
 
+$smarty->assign('pageVideos','on');
 
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);

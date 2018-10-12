@@ -167,32 +167,145 @@
     </div>
 </div>
 
-<div class="header">
-	<div class="header-logo">
-		<a class="nav-logo" href="{$relative}/">
-			<img src="{$relative}/images/logo/logo.png">
-		</a>
-	</div>	
-	<div class="header-signup">
-		
-		<a data-toggle="modal" href="#login-modal">登录</a>
-		<span>|</span>
-		<a href="{$relative}/signup">注册</a>
-		
-		<!--<a href="{$relative}/upload/photo">
-			<i class="icon iconfont icon-ziyuan"></i>
-		</a>-->
-			
-		
-	</div>
-	<div class="header-search">
-		<form action="/search/videos" method="get" name="search" id="search_form">
-			<input type="text" name="search_query" value="" placeholder="请输入搜索内容">
-			<input type="submit" value="">
-		</form>
-	</div>
+<div class="fixediv1 leftadv" style="display:none">
+    <a href="#" target="_blank">
+    	<a href="http://ooo88w.com/" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/88w180X180.gif" />
+    </a>
+    <a class="close" href="javascript:void(0);">
+    	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
+    </a>
+</div>
+<div class="fixediv2 leftadv" style="display:none">
+    <a href="#" target="_blank">
+    	<img src="{$relative_tpl}/img/advertise.jpg" />
+    </a>
+    <a class="close" href="javascript:void(0);">
+    	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
+    </a>
+</div>
+<div class="fixediv1 rightadv" style="display:none">
+    <a href="#"  target="_blank">
+    	<a href="http://ooo88w.com/" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/88w180X180.gif" />
+    </a>
+    <a class="close" href="javascript:void(0);">
+    	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px"/>
+    </a>
+</div>
+<div class="fixediv2 rightadv" style="display:none">
+    <a href="#" target="_blank">
+    	<img src="{$relative_tpl}/img/advertise.jpg" />
+    </a>
+    <a class="close" href="javascript:void(0);">
+    	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
+    </a>
+</div>
+<!-- left corner begin-->
+<div id="popl" style="display:none;">
+    <div id="poplHead">
+        <a id="poplClose" title="关闭">
+        	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
+        </a>
+        <h2></h2>
+    </div>
+    <div id="poplContent">
+        <a href="#" target="_blank">
+        	<img src="{$relative_tpl}/img/advertise.jpg" />
+        </a>
+    </div>
+</div>
+<!-- left corner end-->
+<!-- right corner begin-->
+<div id="pop" style="display:none;">
+    <div id="popHead">
+        <a id="popClose" title="关闭">
+        	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
+        </a>
+        <h2></h2>
+    </div>
+    <div id="popContent">
+        <a href="#" target="_blank">
+        	<img src="{$relative_tpl}/img/advertise.jpg" />
+        </a>
+    </div>
 </div>
 
+<div class="top-nav" style="position: relative;">
+	<div class="container">
+		<ul class="top-menu">
+			{if $multi_language}
+				<div class="pull-left">
+					{insert name=language assign=flag}
+					<li><a data-toggle="modal" href="#language-modal">{$flag} <span class="caret"></span></a></li>					
+				</div>
+			{/if}
+			<div class="pull-right">
+			{if isset($smarty.session.uid)}
+				<li class="dropdown">
+					<a class="dropdown-toggle"  data-toggle="dropdown" href="#">
+						<span class="visible-xs">
+							{if $requests_count > 0 || $mails_count > 0}<div class="badge">{$requests_count+$mails_count}</div>{/if} {$smarty.session.username|truncate:15:"..."} <span class="caret"></span>
+						</span>
+						<span class="hidden-xs">
+							{if $requests_count > 0 || $mails_count > 0}<div class="badge">{$requests_count+$mails_count}</div>{/if} {$smarty.session.username|truncate:35:"..."} <span class="caret"></span>
+						</span>
+					</a>
+					<ul class="dropdown-menu pull-right m-t-0">
+						<li><a href="{$relative}/user">{t c='topnav.my_profile'}</a></li>
+						{if $video_module == '1'}<li><a href="{$relative}/user/{$smarty.session.username}/videos">{t c='topnav.my_videos'}</a></li>{/if}
+						{if $photo_module == '1'}<li><a href="{$relative}/user/{$smarty.session.username}/albums">{t c='topnav.my_photos'}</a></li>{/if}
+						{if $game_module == '1'}<li><a href="{$relative}/user/{$smarty.session.username}/games">{t c='topnav.my_games'}</a></li>{/if}
+						<li><a href="{$relative}/user/{$smarty.session.username}/blog">{t c='topnav.my_blog'}</a></li>
+						<li><a href="{$relative}/feeds">{translate c='global.my_feeds'}</a></li>
+						<li><a href="{$relative}/requests"><span class="pull-left">{translate c='global.requests'}</span>{if $requests_count > 0}<div class="badge pull-right">{$requests_count}</div>{/if}<div class="clearfix"></div></a></li>
+						<li><a href="{$relative}/mail/inbox"><span class="pull-left">{translate c='global.inbox'}</span>{if $mails_count > 0}<div class="badge pull-right">{$mails_count}</div>{/if}<div class="clearfix"></div></a></li>
+					</ul>
+				</li>			
+				<li><a href="{$relative}/logout">{translate c='global.sign_out'}</a></li>
+			{else}
+				<li><a href="{$relative}/signup" rel="nofollow">{translate c='global.sign_up'}</a></li>
+				<li><a data-toggle="modal" href="#login-modal">{translate c='global.login'}</a></li>	
+			{/if}
+			</div>
+			<div class="clearfix"></div>
+		</ul> 
+	</div>
+</div>
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="top: 0; position: relative; ">
+<!-- <div class="navbar navbar-inverse" role="navigation"> -->
+	<div class="container" style="position: relative; padding: 0;">
+		<div class="menu-btn sendwich" id="menu-btn"><span></span></div>
+		<div class="navbar-bd">
+			<a class="nav-logo" href="{$relative}/">
+				<img src="{$relative}/images/logo/logo.png">
+			</a>					
+		</div>
+		<div class="search-btn" id="search-btn"><span></span></div>		
+		
+		<div id="panel-group" class="panel-group" style="padding: 0;">
+            <nav class="responsive-menu">
+                <ul>
+                    <li {if $category == "0"}class="active"{else}{/if}>
+                    	<a href="/">首页</a>
+                    </li>
+                    {section name=i loop=$categories}
+                    <li {if $category == $categories[i].CHID}class="active"{else}{/if}>
+					<a href="{url base=videos/`$categories[i].slug` strip='c' value=''}" >
+						{$categories[i].name}
+					</a>
+					</li>
+					{/section}
+                </ul>
+            </nav>
+            <div class="search">
+				<form class="form1" action="/search/videos" method="get" name="search" id="search_form">
+					<input type="text" name="search_query" value="" placeholder="请输入搜索内容">
+					<input type="submit" value="">
+				</form>
+			</div>                        
+		</div>
+		
+    </div>
+</div>
 
 <div id="wrapper">
 

@@ -1,17 +1,3 @@
-<!-- <div id="divad" class="layui-layer-shade" times="1">
-	<a style="cursor: auto; width: 100%; height: 100%; position: absolute;" id="tago"></a>
-	<div class="layui-layer layui-layer-page  layer-anim" type="page" times="1" showtime="0" contype="string">
-		<div id="" class="layui-layer-content">
-			<a href="https://github.com/51laba/-/wiki/%E6%9C%80%E6%96%B0%E5%9C%B0%E5%9D%80%EF%BC%9A%E8%89%B2%E5%96%87%E5%8F%AD" target="_blank">
-				<img src="{$relative_tpl}/img/sexlaba.jpg" width="240" height="270">
-			</a>
-		</div>
-		<span class="layui-layer-setwin">
-			<a class="layui-layer-ico layui-layer-close layui-layer-close2" id="hided"></a>
-		</span>
-		<span class="layui-layer-resize"></span>
-	</div>
-</div> -->
 
 {literal}
 <script type="text/javascript">

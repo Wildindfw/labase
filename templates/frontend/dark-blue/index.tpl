@@ -49,7 +49,11 @@
 		</div>
 		<div class="pull-right">
 			<a class="btn btn-primary" href="{$relative}/videos?o=bw"><span class="hidden-xs"><i class="fa fa-plus"></i> {translate c='index.videos_being_watched_more'}</span><span class="visible-xs"><i class="fa fa-plus"></i></span></a>
-		</div>		
+		</div>	
+		<div style="width: 800px;height: 50px; margin-left: 120px;">
+			{insert name=adv assign=advnew group='index_new'}
+			{if $advnew}{$advnew}{/if}
+		</div>
 		<div class="clearfix"></div>      	
       	
       	
@@ -100,7 +104,7 @@
 		</div>
 		
 		<div class="col-md-3 col-sm-4">
-			<div class="well ad-body">
+			<div class="well ad-body" style="padding: 0 !important;">
 				{insert name=adv assign=adv group='index_right'}
 				{if $adv}{$adv}{/if}
 			</div>

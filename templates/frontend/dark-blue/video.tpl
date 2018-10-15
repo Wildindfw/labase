@@ -34,7 +34,7 @@ $( document ).ready(function() {
 
 	<div class="well ad-body">
 		<p class="ad-title">{t c='global.sponsors'}</p>
-		{insert name=adv assign=adv group='video_top'}
+		{insert name=adv assign=adv group='index_top'}
 		{if $adv}{$adv}{/if}
 	</div>
 

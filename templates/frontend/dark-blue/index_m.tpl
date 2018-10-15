@@ -228,8 +228,9 @@
 
 {literal}
 <script type="text/javascript">
+	
+	
    $(function(){
-   		
    		var page = {
    			o:"br",
    			p:1,

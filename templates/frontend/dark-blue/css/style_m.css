@@ -1362,3 +1362,23 @@ width: 20px; height: 20px;
     font-size: 10px;
     line-height: 1.8;
 }
+
+.time-view { }
+.time-view a{ margin-right: 15px;;}
+
+
+.view-loading{clear: both; padding: 6px 0; text-align: center; background: #F0EAD8; width: 100%;font-size: 12px;}
+.view-more
+{
+    display: block;
+    height: 40px;
+    font-size: 14px;
+    line-height: 40px;
+    color: #31313b;
+    text-align: center;
+    background-color: #e0e0e0;
+    border: none;
+    -webkit-transition: background .3s linear, color .3s linear;
+    -ms-transition: background .3s linear, color .3s linear;
+    transition: background .3s linear, color .3s linear;
+}

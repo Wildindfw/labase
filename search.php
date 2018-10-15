@@ -13,9 +13,9 @@ if ( !in_array($search_type, $search_types) ) {
     VRedirect::go($config['BASE_URL']. '/error/invalid_search_type');
 }
 
+
 $module             = 'modules/search/' .$search_type. '.php';
 $module_template    = 'search_' .$search_type. '.tpl';
-
 require $module;
 
 $self_title         = strtoupper($search_type) . " - " . str_replace('{#search_query#}', $search_query, $seo['search_title']);

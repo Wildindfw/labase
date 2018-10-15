@@ -19,7 +19,9 @@ $sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumb
                    FROM video" .$sql_add. " ORDER BY viewtime DESC LIMIT " .$config['watched_per_page'];
 $rs             = $conn->execute($sql);
 $viewed_videos  = $rs->getrows();
+
 $viewed_total   = count($viewed_videos);
+
 $sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumber, rate, likes, dislikes, type, hd,thumb_img
                    FROM video" .$sql_add. " ORDER BY addtime DESC LIMIT " .$config['recent_per_page'];
 $rs             = $conn->execute($sql);
@@ -51,10 +53,12 @@ if(is_mobile()){
 
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
-$smarty->display('index.tpl');
+
 if(is_mobile()){
+    $smarty->display('index_m.tpl');
     $smarty->display('footer_m.tpl');
 }else{
+    $smarty->display('index.tpl');
     $smarty->display('footer.tpl');
 }
 $smarty->gzip_encode();

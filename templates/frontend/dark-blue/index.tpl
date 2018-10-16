@@ -51,7 +51,7 @@
 			<a class="btn btn-primary" href="{$relative}/videos?o=bw"><span class="hidden-xs"><i class="fa fa-plus"></i> {translate c='index.videos_being_watched_more'}</span><span class="visible-xs"><i class="fa fa-plus"></i></span></a>
 		</div>	
 		<div style="width: 800px;height: 50px; margin-left: 120px;">
-			{insert name=adv assign=advnew group='index_new'}
+			{insert name=adv assign=advnew group='bofang_video_bar'}
 			{if $advnew}{$advnew}{/if}
 		</div>
 		<div class="clearfix"></div>      	

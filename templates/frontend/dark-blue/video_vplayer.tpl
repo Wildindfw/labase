@@ -68,7 +68,7 @@
 	<div class="yytf_1">
 		<div id="daojs">视频已加载，请稍等，离广告结束还有<span class="djs" style="color:#FFDD00">5</span>秒</div>
 			<div class="lianmeng">
-				<a href="http://ooo88w.com" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/advs.gif" height="100%" width="100%" >
+				<a href="http://ooo88w.com" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/advs.gif" height="100%" width="100%" ></a>
 			</div>
 	</div>
 	<script type="text/javascript">

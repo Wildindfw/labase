@@ -87,7 +87,7 @@ $img = array();
 
 
 foreach ($datas as $k => $v) {
-    $v['vid'] = $v['VID'];
+    
     
     
     $v['time'] = $v['addtime'];
@@ -99,8 +99,10 @@ foreach ($datas as $k => $v) {
     if($v['thumb_img'] != "0"){
         $v['thumb_img'] =  insert_thumb_path($v).'/'.$v['thumb_img'];
     }else{
+        $v['vid'] = $v['VID'];
         $v['thumb_img'] =  insert_thumb_path($v).'/'.$v['thumb'].'.jpg';
     }    
+    
     $datas[$k] = $v;
 }
 

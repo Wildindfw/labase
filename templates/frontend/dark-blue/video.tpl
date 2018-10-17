@@ -29,7 +29,7 @@ $( document ).ready(function() {
 {/literal}
 <link href="{$relative_tpl}/css/video_m.css" rel="stylesheet">
 <script type="text/javascript" src="{$relative_tpl}/js/jquery.video-0.2.js"></script>
-<script type="text/javascript" src="{$relative_tpl}/js/jquery.voting-video-0.1.js"></script>
+<script type="text/javascript" src="{$relative_tpl}/js/jquery.voting-video-pc.js"></script>
 
 <div class="container">
 
@@ -64,26 +64,26 @@ $( document ).ready(function() {
 	{if $is_friend && !$guest_limit}
 		<div class="row">
 			<div style="overflow: hidden;">
-				<div class="col-md-8">
+				<div class="col-md-8" style="padding: 0;">
 					<div>
 						{include file='video_vplayer.tpl'}
 					</div>
 				</div>
-				<div class="col-md-4">
-					<div class="well ad-body">
+				<div class="col-md-4" style="padding: 0;">
+					<div class="well " style="padding: 0;">
 						<p class="ad-title">{t c='global.sponsors'}</p>
 						{insert name=adv assign=adv group='video_right'}
 						{if $adv}{$adv}{/if}
 					</div>
-					<div class="well ad-body">
+					<div class="well " style="padding: 0;">
 						<p class="ad-title">{t c='global.sponsors'}</p>
 						{insert name=adv assign=adv group='video_right_second'}
 						{if $adv}{$adv}{/if}
 					</div>
 				</div>
 			</div>
-			<div style=" clear: both; width: 100%; margin-top: 10px;">
-				<div class="well ad-body">
+			<div style=" clear: both; width: 100%; ">
+				<div class="">
 					{insert name=adv assign=adv group='index_center'}
 					{if $adv}{$adv}{/if}
 				</div>
@@ -92,13 +92,13 @@ $( document ).ready(function() {
 			
 			<div class="col-md-8">
 				
-			   <div class="tools" style="display: none;">
+			   <div class="tools" >
 				    <ul class="rate">
 				        <li class="like">
 				            <a id="vote_like_{$video.VID}" href="javascript:;" title="赞">
 				            <i class="icon-like"></i></a>
 				        </li>
-				        <li class="progress">
+				        <li class="progress" id="progress">
 							<span>{$video.rate}% ({$video.likes}/{$video.dislikes})</span>
 				            <div class="progress-bar">
 				                <div class="indicator" style="width: {$video.rate}%;"></div>
@@ -111,11 +111,11 @@ $( document ).ready(function() {
 				    </ul>
 				    <ul class="buttons">              
 						<li>
-							<a title="下载" href="javascript:void(0)" onclick=""><i class="icon-download"></i></a>
+							<a title="下载" href="javascript:void(0)" id="download"><i class="icon-download"></i></a>
 				        </li>		
 						
 				        <li>
-				        	<a title="分享" class="share_btn" href="#"><i class="icon-link"></i>				                
+				        	<a title="分享" class="share_btn" href="javascript:void(0)"><i class="icon-link"></i>				                
 				            </a>
 				        </li>
 				    </ul>
@@ -132,24 +132,27 @@ $( document ).ready(function() {
 				            </li>
 				        </ul>
 				    </div>
-				</div>
+				
+			   		<div id="flagging_success" class="g_hidden success" style="display: none;text-align: center;">感谢您的评分!</div>
+			   		<div id="flagging_failure" class="g_hidden failure" style="display: none;text-align: center;">请勿重复评分!</div>
+			   </div>
 			
-				<div class="share-block" style="display: none;">
+				<div class="share-block" id="share_block" style="display: none;">
 					<div class="row">
 						<span class="title">镶嵌代码:</span>
 						<div class="wrap-overflow">
-							<textarea class="ftext" id="share_code">
+							<textarea class="ftext" id="share_code"><iframe width="{$embed_width}" height="{$embed_auto_height}" src="{$baseurl}/embed/{$video.vkey}" frameborder="0" allowfullscreen></iframe>
 							</textarea>
 						</div>
 					</div>
 					<div class="row">
 						<span class="title">本影片分享链接:</span>
 						<div class="wrap-overflow">
-							<input class="finp" type="text" id="share_url" value="">
+							<input class="finp" type="text" id="share_url" value="{$baseurl}/embed/{$video.vkey}">
 						</div>
 					</div>					
 				</div>
-				<div class="share-block share-download" >
+				<div class="share-block share-download" id="download_block" >
 					
 					{if $downloads == '1' && $video.embed_code == '' && $is_friend}
 						{if $video.formats}
@@ -188,23 +191,6 @@ $( document ).ready(function() {
 				</div>
 				
 				
-				<div class="vote-box col-xs-7 col-sm-2 col-md-2">
-					<div class="dislikes {if $video.likes == 0 and $video.dislikes == 0}not-voted{/if}">
-						<div id="video_rate" class="likes" style="width: {$video.rate}%;"></div>
-					</div>
-					<div id="vote_msg" class="vote-msg">
-						<div class="pull-left">
-							<i class="glyphicon glyphicon-thumbs-up"></i> <span id="video_likes" class="text-white">{$video.likes}</span>
-						</div>
-						<div class="pull-right">
-							<i class="glyphicon glyphicon-thumbs-down"></i> <span id="video_dislikes" class="text-white">{$video.dislikes}</span>
-						</div>
-						<div class="clearfix"></div>
-					</div>
-				</div>
-				
-				
-				
 				<div class="pull-right visible-xs">
 					<div class="pull-left m-t-15">
 						<a href="#" class="btn btn-primary" id="vote_like_{$video.VID}" ><i class="glyphicon glyphicon-thumbs-up"></i></a>
@@ -212,40 +198,9 @@ $( document ).ready(function() {
 					</div>
 				</div>
 				<div class="clearfix visible-xs"></div>
-				<div class="pull-left m-l-5 hidden-xs">
-					<div class="pull-left m-t-15">
-						<a href="#" class="btn btn-primary" id="vote_like_{$video.VID}" ><i class="glyphicon glyphicon-thumbs-up"></i></a>
-						<a href="#" class="btn btn-primary" id="vote_dislike_{$video.VID}"><i class="glyphicon glyphicon-thumbs-down"></i></a>
-					</div>
-				</div>
-				<div class="pull-right m-t-15">
-					<div id="share_video" class="pull-right"><a href="#share_video" class="btn btn-default"><i class="glyphicon glyphicon-share-alt"></i> <span class="hidden-xs">{t c='global.share'}</span></a></div>
-					{if isset($smarty.session.uid)}
-						<div id="flag_video" class="pull-right m-r-5"><a href="#flag_video" class="btn btn-default"><i class="glyphicon glyphicon-flag"></i> <span class="hidden-xs">{t c='global.flag'}</span></a></div>
-						<div id="favorite_video" class="pull-right m-r-5"><a href="#favorite_video" class="btn btn-default" id="favorite_video_{$video.VID}"><i class="glyphicon glyphicon-heart"></i> <span class="hidden-xs">{t c='global.favorite'}</span></a></div>
-					{/if}
-						{if $video_embed == '1' && $video.embed_code == '' && $is_friend}
-						<div id="embed_video" class="pull-right m-r-5"><a href="#embed_video" class="btn btn-default"><i class="glyphicon glyphicon-link"></i> <span class="hidden-xs">{t c='global.embed'}</span></a></div>
-						{/if}
-					<div class="clearfix"></div>
-				</div>
-				{if $downloads == '1' && $video.embed_code == '' && $is_friend}
-					<div class="pull-right m-t-15 m-r-5">
-						<div class="btn-group">
-							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-download-alt"></i><span class="hidden-xs hidden-sm hidden-sm hidden-md hidden-lg"> {t c='global.download'}</span> <span class="caret"></span></button>
-							<ul class="dropdown-menu">
-								{if $video.formats}
-									{section name=i loop=$video.files}
-										<li><a href="{$baseurl}/download.php?id={$video.VID}&label={$video.files[i].label}">{if $video.files[i].height >= 480}HD - {$video.files[i].label} (MP4){else}SD - {$video.files[i].label} (MP4){/if}</a></li>
-									{/section}
-								{else}
-									{if $video.hd == '1'}<li><a href="{$baseurl}/download_hd.php?id={$video.VID}">HD (MP4)</a></li>{/if}
-									{if $video.iphone == '1'}<li><a href="{$baseurl}/download_mobile.php?id={$video.VID}">Mobile (MP4)</a></li>{/if}
-								{/if}
-							</ul>
-						</div>
-					</div>
-				{/if}
+				
+				
+				
 				<div class="clearfix"></div>
 				<div id="response_message" style="display: none;"></div>
 				{if $video_embed == '1' && $video.embed_code == '' && $is_friend}
@@ -531,8 +486,7 @@ $( document ).ready(function() {
 		<p class="ad-title">{t c='global.sponsors'}</p>
 		{insert name=adv assign=adv group='video_bottom'}
 		{if $adv}{$adv}{/if}
-	</div>
-	
+	</div>	
 {literal}
 <script>
 	
@@ -540,22 +494,20 @@ $( document ).ready(function() {
 		$this = $(this);
 		$this.toggleClass('active');
 		if( $this.hasClass('active')) {
-			$(event.data.className).slideDown();
+			$(event.data.id).slideDown();
 		} else {
-			$(event.data.className).slideUp();
+			$(event.data.id).slideUp();
 		}
 		return false;
 	}		
-	$('.share_btn').on('click',{ className: '.share-block' }, toogleShowBlock);
-	
+	$('.share_btn').on('click',{id:"#share_block"}, toogleShowBlock);
+	$("#download").on('click',{id:"#download_block"}, toogleShowBlock);
 </script>
 
 <script>
 						
 	$(function(){
-		var u = location.href;
-		$("#share_code").val(`<iframe width="1914" height="1033" src="${u}" frameborder="0" allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe>`);
-		$("#share_url").val(u);
+		$("#share_url").val(location.href);
 	})
 	
 	

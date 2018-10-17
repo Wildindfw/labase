@@ -85,7 +85,8 @@
 	      	vertical-align: middle;
 	  	}
 		.tools .rate li.like, .tools .rate li.dislike {width: 22%; }
-		.tools .rate a {display: block; }
+		.tools .rate a {display: block; text-decoration: none; }
+		.tools .rate a:hover{text-decoration: none;}
 		.tools .rate .progress {padding: 0 9px;text-align: center; }
 	    .tools .rate .progress span {
 	        display: block;
@@ -128,9 +129,9 @@
 		    position: relative; 
 		    vertical-align: middle;
 		}
-		.tools .buttons li > a {display: block; }
+		.tools .buttons li > a {display: block;text-decoration: none; }
 		.tools .buttons li > a:hover i,
-		.tools .buttons li > a.active i {color: #e20055; }
+		.tools .buttons li > a.active i {color: #e20055; text-decoration: none;}
 		.tools .buttons li > a:hover .tooltip {display: block; }
 		.tools .buttons a.add_fav {display: block !important}
 		.tools .buttons i {

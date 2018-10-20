@@ -281,10 +281,12 @@ if(is_mobile()){
 }
 $smarty->display('errors.tpl');
 $smarty->display('messages.tpl');
-$smarty->display('video.tpl');
+
 if(is_mobile()){
+    $smarty->display('video_m.tpl');
     $smarty->display('footer_m.tpl');
 }else{
+    $smarty->display('video.tpl');
     $smarty->display('footer.tpl');
 }
 $smarty->gzip_encode();

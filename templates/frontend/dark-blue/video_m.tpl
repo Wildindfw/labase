@@ -85,8 +85,7 @@ $( document ).ready(function() {
 				</div>
 				<div class="col-md-4" style="padding: 0;">
 					<div class="well " style="padding: 0;margin: 0;">
-						<p class="ad-title">{t c='global.sponsors'}</p>
-						{insert name=adv assign=adv group='video_right'}
+						{insert name=adv assign=adv group='video_right_m'}
 						{if $adv}{$adv}{/if}
 					</div>					
 				</div>

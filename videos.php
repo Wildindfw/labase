@@ -117,6 +117,7 @@ $sql            = "SELECT * FROM video" .$sql_add. " LIMIT " .$limit;
 $rs             = $conn->execute($sql);
 $videos         = $rs->getrows();
 
+
 if ($slug) {
 	$page_link      = $pagination->getPagination('videos/'.$slug);	
 	$smarty->assign('base', 'videos/'.$slug);
@@ -124,6 +125,7 @@ if ($slug) {
 	$page_link      = $pagination->getPagination('videos');
 	$smarty->assign('base', 'videos');	
 }
+
 
 $start_num      = $pagination->getStartItem();
 $end_num        = $pagination->getEndItem();

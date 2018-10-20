@@ -32,6 +32,7 @@
 		.ad-body{ width: 100%; padding: 0 !important;}
 		.container .well-filters{ padding: 0 9px !important;}
 		.bofang_video_bar img{ max-height: 40px;}
+		
 	}
 	
 </style>

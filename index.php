@@ -3,7 +3,7 @@ define('_VALID', true);
 require 'include/config.php';
 require 'include/function_global.php';
 require 'include/function_smarty.php';
-
+require 'classes/pagination.class.php';
 
 //
 $sql_add	= NULL;
@@ -22,10 +22,26 @@ $viewed_videos  = $rs->getrows();
 
 $viewed_total   = count($viewed_videos);
 
+
+/*最新视频分页功能*/
+$sql            = "SELECT count(VID) AS total_videos FROM video" .$sql_add;
+$rsc            = $conn->execute($sql);
+$total          = $rsc->fields['total_videos'];
+$pagination     = new Pagination($config['recent_per_page']);
+$limit          = $pagination->getLimit($total);
 $sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumber, rate, likes, dislikes, type, hd,thumb_img
-                   FROM video" .$sql_add. " ORDER BY addtime DESC LIMIT " .$config['recent_per_page'];
+                   FROM video" .$sql_add. " ORDER BY addtime DESC LIMIT " .$limit;
 $rs             = $conn->execute($sql);
 $recent_videos  = $rs->getrows();
+
+// $sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumber, rate, likes, dislikes, type, hd,thumb_img
+//                    FROM video" .$sql_add. " ORDER BY addtime DESC LIMIT " .$config['recent_per_page'];
+// $rs             = $conn->execute($sql);
+// $recent_videos  = $rs->getrows();
+
+
+$page_link      = $pagination->getPagination('/');
+$smarty->assign('page_link', $page_link);
 
 
 $smarty->assign('pageHome','on');

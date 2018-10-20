@@ -213,6 +213,13 @@
 				</div>			
             {/section}
 			</div>
+			<div class="row">
+				{if $page_link}			
+					<div style="text-align: center;" >
+						<ul class="pagination pagination-lg">{$page_link}</ul>
+					</div>
+				{/if}
+			</div>
             {else}
 			<div class="well well-sm">
 				<span class="text-danger">{t c='videos.no_videos_found'}.</span>

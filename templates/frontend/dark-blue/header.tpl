@@ -280,6 +280,16 @@
 			</button>
 			<a class="navbar-brand" href="{$relative}/"><img src="{$relative}/images/logo/logo.png"></a> 
 		</div>
+		<div class="navbar-search" style="">
+			<form class="form-inline" name="search" id="search_form" method="get" action="/search/videos">
+				<div class="input-group">
+				<input type="text" class="form-control" placeholder="搜索" name="search_query" id="search_query" value="">
+				<span class="input-group-btn">
+					<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+				</span>
+				</div>
+			</form>
+		</div>
 		<div class="navbar-collapse collapse navbar-inverse-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				{if $video_module == '1'}<li{if $menu == 'videos'} class="active"{/if}><a href="{$relative}/videos">{translate c='menu.videos'}</a></li>{/if}
@@ -298,7 +308,7 @@
 				{if $blog_module == '1'}<li{if $menu == 'blogs'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/blogs">{translate c='menu.blogs'}</a></li>{/if}
 				<li{if $menu == 'categories'} class="active hidden-sm"{else} class="hidden-sm"{/if}>{if $video_module == '1'}<a href="{$relative}/categories">{elseif $photo_module == '1'}<a href="{$relative}/categories?s=a">{else}<a href="{$relative}/categories?s=g">{/if}{translate c='menu.categories'}</a></li>
 				<li{if $menu == 'community'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/community">{translate c='menu.community'}</a></li>
-				<li class="dropdown">
+				<li class="dropdown" style="display: none;">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
 				<ul class="dropdown-menu search-dropdown-menu">
 					<form class="form-inline" name="search" id="search_form" method="get" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">

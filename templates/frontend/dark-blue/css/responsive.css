@@ -7,7 +7,9 @@
 
 
 
-
+.navbar-search{
+	float: left; margin-left: 50px; width: 350px; padding-top: 30px;
+}
 
 	/*==========  Mobile First Method  ==========*/
 
@@ -26,17 +28,22 @@
 	@media only screen and (min-width : 768px) {
 	
 	body {
-		padding-top: 110px;
+		padding-top: 160px;
 	}
 	
 	.navbar {
-		min-height: 60px;
+		min-height: 100px;
 	}
 	
 	.navbar-brand {
-		height: 60px;
+		height: 90px;
 	}
-
+	
+	
+	
+	.navbar-nav.navbar-right:last-child{
+		    margin-top: 20px;
+	}
 	.navbar-inverse .navbar-nav > li > a {
 		font-size: 16px;
 		padding-top: 20px;
@@ -60,13 +67,24 @@
 	}
 
 	/* Medium Devices, Desktops */
-	@media only screen and (min-width : 992px) {
+	@media only screen and (min-width : 900px) {
 
+		.navbar-search{
+			width: 150px;
+		}
+	}
+	
+	/* Medium Devices, Desktops */
+	@media only screen and (min-width : 1000px) {
+
+		.navbar-search{
+			width: 300px;
+		}
 	}
 
 	/* Large Devices, Wide Screens */
 	@media only screen and (min-width : 1200px) {
-
+		
 	}
 
 
@@ -85,7 +103,7 @@
 
 	/* Small Devices, Tablets */
 	@media only screen and (max-width : 768px)  {
-		
+		.navbar-search{ display: none;}
 
 	}
 

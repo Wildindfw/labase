@@ -35,6 +35,16 @@ $( document ).ready(function() {
 
 	<div class="well ad-body">
 		<p class="ad-title">{t c='global.sponsors'}</p>
+		{insert name=adv assign=adv_a group='index_top_a'}
+		{if $adv_a}{$adv_a}{/if}
+		{insert name=adv assign=adv_b group='index_top_b'}
+		{if $adv_b}{$adv_b}{/if}
+		{insert name=adv assign=adv_c group='index_top_c'}
+		{if $adv_c}{$adv_c}{/if}
+		{insert name=adv assign=adv_d group='index_top_d'}
+		{if $adv_d}{$adv_d}{/if}
+		{insert name=adv assign=adv_e group='index_top_e'}
+		{if $adv_e}{$adv_e}{/if}
 		{insert name=adv assign=adv group='index_top'}
 		{if $adv}{$adv}{/if}
 	</div>
@@ -58,11 +68,11 @@ $( document ).ready(function() {
 		{/if}
 	</div>
 	
-	{insert name=adv assign=adv group='video_play_top'}
-		{if $adv}{$adv}{/if}
+	{insert name=adv assign=advnew group='bofang_video_bar'}
+			{if $advnew}{$advnew}{/if}
 	
 	{if $is_friend && !$guest_limit}
-		<div class="row">
+		<div class="row" style="margin: 0;">
 			<div style="overflow: hidden;">
 				<div class="col-md-8" style="padding: 0;">
 					<div>
@@ -70,29 +80,21 @@ $( document ).ready(function() {
 					</div>
 				</div>
 				<div class="col-md-4" style="padding: 0;">
-					<div class="well " style="padding: 0;">
+					<div class="well " style="padding: 0;margin: 0;">
 						<p class="ad-title">{t c='global.sponsors'}</p>
 						{insert name=adv assign=adv group='video_right'}
 						{if $adv}{$adv}{/if}
-					</div>
-					<div class="well " style="padding: 0;">
-						<p class="ad-title">{t c='global.sponsors'}</p>
-						{insert name=adv assign=adv group='video_right_second'}
-						{if $adv}{$adv}{/if}
-					</div>
+					</div>					
 				</div>
 			</div>
-			<div style=" clear: both; width: 100%; ">
+			<div style=" clear: both; width: 100%; margin-top: 10px; ">
 				<div class="">
 					{insert name=adv assign=adv group='index_center'}
 					{if $adv}{$adv}{/if}
 				</div>
 			</div>
-			
-			
-			<div class="col-md-8">
-				
-			   <div class="tools" >
+			<div style=" clear: both; width: 100%; ">
+				<div class="tools" >
 				    <ul class="rate">
 				        <li class="like">
 				            <a id="vote_like_{$video.VID}" href="javascript:;" title="赞">
@@ -124,7 +126,15 @@ $( document ).ready(function() {
 				            <li>
 				                <i class="icon-eye"></i>
 				                <span class="key">播放次数:</span> <span class="value">{$video.viewnumber}</span>
-				            </li>            
+				            </li>  
+				            <li>
+				                <i class="icon-time"></i>
+				                <span class="key">影片长度:</span> 
+				                <span class="value">
+				                	{insert name=duration assign=duration duration=$videos[i].duration}
+									{$duration}
+				                </span>
+				            </li>
 				            <li>
 				                <i class="icon-add"></i>
 				                {insert name=time_range assign=addtime time=$video.addtime}
@@ -191,13 +201,14 @@ $( document ).ready(function() {
 				</div>
 				
 				
-				<div class="pull-right visible-xs">
-					<div class="pull-left m-t-15">
-						<a href="#" class="btn btn-primary" id="vote_like_{$video.VID}" ><i class="glyphicon glyphicon-thumbs-up"></i></a>
-						<a href="#" class="btn btn-primary" id="vote_dislike_{$video.VID}"><i class="glyphicon glyphicon-thumbs-down"></i></a>
-					</div>
-				</div>
-				<div class="clearfix visible-xs"></div>
+			</div>
+			
+			<div class="col-md-8">
+				
+			   
+				
+				
+				<div class="clearfix "></div>
 				
 				
 				
@@ -330,12 +341,7 @@ $( document ).ready(function() {
 				<div class="clearfix"></div>
 				
 				
-				<div class="m-t-10 m-b-15">
-					<!-- Go to www.addthis.com/dashboard to customize your tools -->
-					<div class="addthis_sharing_toolbox"></div>
-					<!-- Go to www.addthis.com/dashboard to customize your tools -->
-					<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=avsbookmark"></script>
-				</div>
+				
 			</div>
 			
 		</div>

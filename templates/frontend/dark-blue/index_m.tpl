@@ -31,7 +31,9 @@
 		.container{ padding: 0;}
 		.ad-body{ width: 100%; padding: 0 !important;}
 		.container .well-filters{ padding: 0 9px !important;}
+		.bofang_video_bar img{ max-height: 40px;}
 	}
+	
 </style>
 
 {/literal}
@@ -39,6 +41,16 @@
 <div class="container">
 
 	<div class="well ad-body">
+		{insert name=adv assign=adv_a group='index_top_a'}
+		{if $adv_a}{$adv_a}{/if}
+		{insert name=adv assign=adv_b group='index_top_b'}
+		{if $adv_b}{$adv_b}{/if}
+		{insert name=adv assign=adv_c group='index_top_c'}
+		{if $adv_c}{$adv_c}{/if}
+		{insert name=adv assign=adv_d group='index_top_d'}
+		{if $adv_d}{$adv_d}{/if}
+		{insert name=adv assign=adv_e group='index_top_e'}
+		{if $adv_e}{$adv_e}{/if}
 		{insert name=adv assign=adv group='index_top'}
 		{if $adv}{$adv}{/if}
 	</div>
@@ -50,6 +62,10 @@
 		<div class="pull-right">
 			<a class="btn btn-primary" href="{$relative}/videos?o=bw"><span class="hidden-xs"><i class="fa fa-plus"></i> {translate c='index.videos_being_watched_more'}</span><span class="visible-xs"><i class="fa fa-plus"></i></span></a>
 		</div>		
+		<div style="height: 50px; margin-left: 100px; margin-right: 40px;" class="bofang_video_bar">
+			{insert name=adv assign=advnew group='bofang_video_bar'}
+			{if $advnew}{$advnew}{/if}
+		</div>
 		<div class="clearfix"></div>
       	
       	<div class="time-view" id="sort_viewtime">
@@ -172,7 +188,7 @@
 		</div>
 		<div class="pull-right">
 			<a class="btn btn-primary" href="{$relative}/videos?o=mr"><span class="hidden-xs"><i class="fa fa-plus"></i> {translate c='index.most_recent_videos_more'}</span><span class="visible-xs"><i class="fa fa-plus"></i></span></a>
-		</div>		
+		</div>			
 		<div class="clearfix"></div>
 	</div>
 

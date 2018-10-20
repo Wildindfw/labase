@@ -37,8 +37,19 @@
 {/literal}
 
 <div class="container">
-
 	<div class="well ad-body">
+		<div>
+			{insert name=adv assign=adv_a group='index_top_a'}
+			{if $adv_a}{$adv_a}{/if}
+			{insert name=adv assign=adv_b group='index_top_b'}
+			{if $adv_b}{$adv_b}{/if}
+			{insert name=adv assign=adv_c group='index_top_c'}
+			{if $adv_c}{$adv_c}{/if}
+			{insert name=adv assign=adv_d group='index_top_d'}
+			{if $adv_d}{$adv_d}{/if}
+			{insert name=adv assign=adv_e group='index_top_e'}
+			{if $adv_e}{$adv_e}{/if}
+		</div>		
 		{insert name=adv assign=adv group='index_top'}
 		{if $adv}{$adv}{/if}
 	</div>

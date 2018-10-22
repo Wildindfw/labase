@@ -8,6 +8,8 @@ require $config['BASE_DIR']. '/include/compat/json.php';
 require $config['BASE_DIR']. '/include/dbconn.php';
 require_once ($config['BASE_DIR']. '/include/function_thumbs.php');
 
+require 'include/function_smarty.php';
+
 $data   = array('status' => 0, 'videos' => '', 'page' => 0, 'pages' => 0, 'move' => '', 'debug' => '');
 if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page']) ) {
     $filter         = new VFilter();
@@ -65,6 +67,22 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
 
     $code[]     = '<div class="row">';	
     foreach ( $videos as $video ) {
+        
+        
+        $video['ti'] = $video['thumb_img'];
+        
+        if($video['thumb_img'] != "0" && $video['thumb_img'] != ""){
+            $video['ti'] = $video['ti'].'---11---'.$video['thumb_img'];
+            
+            $video['thumb_img'] =  insert_thumb_path($video).'/'.$video['thumb_img'];
+        }else{
+            $video['vid'] = $video['VID'];
+            $video['ti'] = $video['ti'].'---222---'.$video['thumb'].'+++'. $config['SERVICE_URL'];
+           
+            
+            $video['thumb_img'] =  insert_thumb_path($video).'/'.$video['thumb'].'.jpg';
+        }
+        
 		if ($video['type'] == 'private') {
 			$img_class = 'class="img-responsive img-private"';
 		}
@@ -75,7 +93,7 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
         $code[]     = '<div class="well well-sm m-b-0 m-t-20">';
         $code[]     = '<a href="' .$config['BASE_URL']. '/video/' .$video['VID']. '/' .prepare_string($video['title']). '">';		
         $code[]     = '<div class="thumb-overlay">';
-		$code[]     = '<img src="' .get_thumb_url($video['VID']). '/'.$video['thumb'].'.jpg" title="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" alt="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" id="rotate_' .$video['VID']. '_'.$video['thumbs'].'_'.$video['thumb'].'" '.$img_class.' />';
+        $code[]     = '<img data-ti="'.$video['ti'].'" src="' .$video['thumb_img'].'" title="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" alt="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" id="rotate_' .$video['VID']. '_'.$video['thumbs'].'_'.$video['thumb'].'" '.$img_class.' />';
 		if ($video['type'] == 'private') {		
 			$code[]     = '<div class="label-private">' .$lang['global.PRIVATE']. '</div>';
 		}

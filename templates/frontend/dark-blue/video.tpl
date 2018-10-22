@@ -66,7 +66,7 @@ $( document ).ready(function() {
 			</div>
 		{else}
 			<div class="col-md-8">
-					<h3 class="hidden-xs big-title-truncate m-t-0">{$video.title|escape:'html'}</h3>
+					<h3 class="hidden-xs big-title-truncate m-t-0" style="font-size: 14px;">{$video.title|escape:'html'}</h3>
 					<h4 class="visible-xs big-title-truncate m-t-0">{$video.title|escape:'html'}</h4>
 			</div>
 		{/if}
@@ -395,8 +395,8 @@ $( document ).ready(function() {
 					<center>
 						<div class="center_related" style="display: none;  margin: -6px 0 -26px 0;"><img src="{$relative_tpl}/img/loading-bubbles.svg"></div>
 						<ul class="pager">
-						  <li><a href="#prev_related_videos" id="prev_related_videos_{$video.VID}" style="display: none;">{t c='global.hide'}</a></li>
-						  <li><a href="#next_related_videos" id="next_related_videos_{$video.VID}" >{t c='global.show_more'}</a></li>
+						  <li><a href="#prev_related_videos" id="prev_related_videos_{$video.VID}" style="display: none;">隐藏</a></li>
+						  <li><a href="#next_related_videos" id="next_related_videos_{$video.VID}" >更多</a></li>
 						</ul>
 					</center>
 				{/if}

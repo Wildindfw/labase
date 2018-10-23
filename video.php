@@ -244,8 +244,6 @@ if ($new_permisions['watch_normal_videos'] == 0) {
 
 $categories     = get_categories();
 $smarty->assign('categories',$categories);
-
-
 $smarty->assign('errors',$errors);
 $smarty->assign('messages',$messages);
 $smarty->assign('menu', 'videos');

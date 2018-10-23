@@ -524,7 +524,6 @@ $( document ).ready(function() {
 	})
 	
 	
-	
 </script>
 {/literal}
 </div>

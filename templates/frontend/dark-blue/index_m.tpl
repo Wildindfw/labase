@@ -338,3 +338,26 @@
 </script>
 
 {/literal}
+<script src="/scripts/layer/layer.js"></script>
+{literal}
+<script type="text/javascript">
+    $(document).ready(function() {
+    	
+	    	layer.open({
+	          type: 1,
+	          area: '255',
+	          title:null,
+	          shadeClose: true, //点击遮罩关闭,下边的content不能换行
+	          content: '<a href="https://github.com/51laba/-/wiki/%E6%9C%80%E6%96%B0%E5%9C%B0%E5%9D%80%EF%BC%9A%E8%89%B2%E5%96%87%E5%8F%AD" target="_blank"><img width="240" height="270" src="'+tpl_url +'/img/fbq.jpg" /></a>'
+	       });
+	         var top = ($(window).height() - 250) / 2;
+	         var left = $(window).width() / 2 - 250/ 2;
+	         layer.style(1, {
+	             top: top,
+	             left:left
+	       });
+    	
+       
+    });
+</script>
+{/literal}

@@ -65,18 +65,15 @@
 <script type="text/javascript" src="{$relative_tpl}/js/ckplayer/ckplayer.js"></script>
 <div class="video-container">
 	<div id="video" class="vidvid" style="width: 100%;"></div>
-	<div class="yytf_1">
-		<div id="daojs">视频已加载，请稍等，离广告结束还有<span class="djs" style="color:#FFDD00">5</span>秒</div>
-			<div class="lianmeng">
-				<a href="http://ooo88w.com" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/advs.gif" height="100%" width="100%" ></a>
-			</div>
-	</div>
+	
 	<script type="text/javascript">
 		var videoObject = {ldelim}
 		container: '#video', //容器的ID或className
 		variable: 'player',//播放函数名称
 		flashplayer:false,
+		autoplay:true,
 		poster:'material/poster.jpg',//封面图片
+		advertisements:'/ckplayer.php',//广告动态获取
 		video: [//视频地址列表形式
 			{section name=i loop=$video.files}
 				['{$video.files[i].file}', '', '{if $video.files[i].height == 1080}蓝光SD{/if}{if $video.files[i].height == 720}超清{/if}{if $video.files[i].height == 480}高清{/if}{if $video.files[i].height == 360}标清{/if}{if $video.files[i].height == 360}普清{/if}', 0],

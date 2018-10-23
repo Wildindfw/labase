@@ -482,9 +482,9 @@ function insert_thumb_path($options)
 				}
 			}	
 		}
-		$output = $config['SERVICE_URL'].'/media/videos/'.$tmb_folder.'/'.$vid;
+		$output = str_replace("/media/videos/", "", $config['SERVICE_URL']).'/media/videos/'.$tmb_folder.'/'.$vid;
 	}else{
-		$output = $config['BASE_URL'].'/media/videos/'.$tmb_folder.'/'.$vid;
+	    $output = str_replace("/media/videos/", "", $config['SERVICE_URL']).'/media/videos/'.$tmb_folder.'/'.$vid;
 	}
 	return $output;
 }

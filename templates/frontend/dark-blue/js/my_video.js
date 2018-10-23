@@ -5,6 +5,7 @@ var player=null;
 var dtime=null;
 $(document).ready(function($) {
 		player = new ckplayer(videoObject);
+		return true;
 		$('.yytf_1').show();
 		$('.djs').html('5');
 		if(dtime!=null){

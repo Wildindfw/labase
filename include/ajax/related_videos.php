@@ -18,10 +18,10 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
     $move           = ( $_POST['move'] == 'next' ) ? 'next' : 'prev';
     if ( $move == 'prev' ) {
         $page   = ( $page < 1 ) ? 1: $page-1;
-		$data['move']  = 'prev';
+        $data['move']  = 'prev';
     } else {
         $page   = $page+1;
-		$data['move']  = 'next';
+        $data['move']  = 'next';
     }
     
     $sql            = "SELECT title, channel, keyword, type FROM video WHERE VID = " .$vid. " LIMIT 1";
@@ -41,20 +41,20 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
         $sql_add   .= ")";
     }
     
-	$type			= ($config['show_private_videos'] == '1') ? '' : " AND type = 'public'";
+    $type			= ($config['show_private_videos'] == '1') ? '' : " AND type = 'public'";
     $sql            = "SELECT COUNT(VID) AS total_videos FROM video WHERE channel = '" .$video['channel']. "' AND VID != " .$vid. "
 					   AND active = '1'" .$type. "
                        AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")";
     $rs             = $conn->execute($sql);
     $total          = $rs->fields['total_videos'];
     if ( $total > 80 ) {
-	$total = 80;
+        $total = 80;
     }
     $total          = ( $total > 80 ) ? 80 : $total;
     $pagination     = new Pagination(8, $page);
     $limit          = $pagination->getLimit($total);
     $sql            = "SELECT VID, title, duration, addtime, rate, likes, dislikes, viewnumber, type, thumb, thumbs, hd
-	                   FROM video 
+	                   FROM video
                        WHERE channel = '" .intval($video['channel']). "' AND VID != " .$vid. "
 					   AND active = '1'" .$type. "
                        AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")
@@ -64,42 +64,35 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
     $code           = array();
     $total_pages    = $pagination->getTotalPages();
     $page           = ( $page >= $total_pages ) ? $total_pages : $page;
-
-    $code[]     = '<div class="row">';	
+    
+    $code[]     = '<div class="row">';
     foreach ( $videos as $video ) {
         
-        
-        $video['ti'] = $video['thumb_img'];
-        
+                
         if($video['thumb_img'] != "0" && $video['thumb_img'] != ""){
-            $video['ti'] = $video['ti'].'---11---'.$video['thumb_img'];
-            
             $video['thumb_img'] =  insert_thumb_path($video).'/'.$video['thumb_img'];
         }else{
-            $video['vid'] = $video['VID'];
-            $video['ti'] = $video['ti'].'---222---'.$video['thumb'].'+++'. $config['SERVICE_URL'];
-           
-            
+            $video['vid'] = $video['VID'];            
             $video['thumb_img'] =  insert_thumb_path($video).'/'.$video['thumb'].'.jpg';
         }
         
-		if ($video['type'] == 'private') {
-			$img_class = 'class="img-responsive img-private"';
-		}
-		else {
-			$img_class = 'class="img-responsive"';
-		}
+        if ($video['type'] == 'private') {
+            $img_class = 'class="img-responsive img-private"';
+        }
+        else {
+            $img_class = 'class="img-responsive"';
+        }
         $code[]     = '<div class="col-sm-6 col-md-3 col-lg-3">';
         $code[]     = '<div class="well well-sm m-b-0 m-t-20">';
-        $code[]     = '<a href="' .$config['BASE_URL']. '/video/' .$video['VID']. '/' .prepare_string($video['title']). '">';		
+        $code[]     = '<a href="' .$config['BASE_URL']. '/video/' .$video['VID']. '/' .prepare_string($video['title']). '">';
         $code[]     = '<div class="thumb-overlay">';
-        $code[]     = '<img data-ti="'.$video['ti'].'" src="' .$video['thumb_img'].'" title="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" alt="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" id="rotate_' .$video['VID']. '_'.$video['thumbs'].'_'.$video['thumb'].'" '.$img_class.' />';
-		if ($video['type'] == 'private') {		
-			$code[]     = '<div class="label-private">' .$lang['global.PRIVATE']. '</div>';
-		}
-		if ($video['hd'] == 1) {		
-			$code[]     = '<div class="hd-text-icon">HD</div>';
-		}		
+        $code[]     = '<img  src="' .$video['thumb_img'].'" title="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" alt="' .htmlspecialchars($video['title'], ENT_QUOTES, 'UTF-8'). '" id="rotate_' .$video['VID']. '_'.$video['thumbs'].'_'.$video['thumb'].'" '.$img_class.' />';
+        if ($video['type'] == 'private') {
+            $code[]     = '<div class="label-private">' .$lang['global.PRIVATE']. '</div>';
+        }
+        if ($video['hd'] == 1) {
+            $code[]     = '<div class="hd-text-icon">HD</div>';
+        }
         $code[]     = '<div class="duration">';
         $code[]     = duration($video['duration']);
         $code[]     = '</div>';
@@ -110,17 +103,17 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
         $code[]     = time_range($video['addtime']);;
         $code[]     = '</div>';
         $code[]     = '<div class="video-views pull-left">';
-		$views      = ($video['viewnumber'] == '1') ? $lang['global.view'] : $lang['global.views'];
+        $views      = ($video['viewnumber'] == '1') ? $lang['global.view'] : $lang['global.views'];
         $code[]     = $video['viewnumber']. ' '.$views;
         $code[]     = '</div>';
-		if ($video['rate'] == 0 && $video[dislikes] == 0) {
-			$rate_class = 'no-rating"';
-			$rate_icon  = '<i class="fa fa-heart video-rating-heart no-rating"></i> <b>-</b>';
-			}
-		else {
-			$rate_class = '';
-			$rate_icon  = '<i class="fa fa-heart video-rating-heart"></i> <b>' .$video['rate']. '%</b>';
-		}
+        if ($video['rate'] == 0 && $video[dislikes] == 0) {
+            $rate_class = 'no-rating"';
+            $rate_icon  = '<i class="fa fa-heart video-rating-heart no-rating"></i> <b>-</b>';
+        }
+        else {
+            $rate_class = '';
+            $rate_icon  = '<i class="fa fa-heart video-rating-heart"></i> <b>' .$video['rate']. '%</b>';
+        }
         $code[]     = '<div class="video-rating pull-right ' .$rate_class. '">';
         $code[]     = $rate_icon;
         $code[]     = '</div>';
@@ -128,10 +121,10 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
         $code[]     = '</div>';
         $code[]     = '</div>';
     }
-    $code[]     = '</div>';		
+    $code[]     = '</div>';
     $code[]     = '<div id="related_videos_container_' .$page. '"></div>';
-	
-	
+    
+    
     $data['page']   = $page;
     $data['status'] = ( $total_pages > 1 ) ? 1 : 0;
     $data['videos'] = implode("\n", $code);

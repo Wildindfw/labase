@@ -307,28 +307,7 @@
 				
 				{if $blog_module == '1'}<li{if $menu == 'blogs'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/blogs">{translate c='menu.blogs'}</a></li>{/if}
 				<li{if $menu == 'categories'} class="active hidden-sm"{else} class="hidden-sm"{/if}>{if $video_module == '1'}<a href="{$relative}/categories">{elseif $photo_module == '1'}<a href="{$relative}/categories?s=a">{else}<a href="{$relative}/categories?s=g">{/if}{translate c='menu.categories'}</a></li>
-				<li{if $menu == 'community'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/community">{translate c='menu.community'}</a></li>
-				<li class="dropdown" style="display: none;">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-search"></i></a>
-				<ul class="dropdown-menu search-dropdown-menu">
-					<form class="form-inline" name="search" id="search_form" method="get" action="{$relative}/search/{if !isset($search_type)}videos{else}{$search_type}{/if}">
-						<div class="input-group">
-						<input type="text" class="form-control" placeholder="{t c='ajax.search'}" name="search_query" id="search_query" value="{if isset($search_query)}{$search_query}{/if}">
-						<span class="search-select input-group-addon">
-							<select class="form-control" id="search_type">
-								<option value="videos"{if isset($search_type) && $search_type == 'videos'} selected="yes"{/if}>{translate c='global.videos'}</option>
-								{if $photo_module == '1'}<option value="photos"{if isset($search_type) && $search_type == 'photos'} selected="yes"{/if}>{translate c='global.photos'}</option>{/if}
-								{if $game_module == '1'}<option value="games"{if isset($search_type) && $search_type == 'games'} selected="yes"{/if}>{translate c='global.games'}</option>{/if}
-								<option value="users"{if isset($search_type) && $search_type == 'users'} selected="yes"{/if}>{translate c='global.users'}</option>
-							</select>		
-						</span>
-						<span class="input-group-btn">
-							<button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-						</span>
-						</div>
-					</form>
-				</ul>
-				</li>
+				<li{if $menu == 'community'} class="active hidden-sm"{else} class="hidden-sm"{/if}><a href="{$relative}/community">{translate c='menu.community'}</a></li>				
 				<li><button type="button" class="btn btn-primary navbar-btn m-l-15 m-r-15" onclick="location.href='{$relative}/upload'">{translate c='menu.upload'}</button></li>						
 			</ul>
 			

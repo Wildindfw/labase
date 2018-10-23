@@ -4,7 +4,6 @@ require 'include/config.php';
 require 'include/function_global.php';
 require 'include/function_smarty.php';
 
-
 //类型
 $t       = $_GET['t'];
 //页码

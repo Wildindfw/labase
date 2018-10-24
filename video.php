@@ -183,8 +183,7 @@ if ( $config['approve'] == '1' ) {
 }
 $sql_at	       .= $sql_delim;
 
-$sql            = "SELECT COUNT(VID) AS total_videos FROM video" .$sql_at. " channel = '" .$video['channel']. "' AND VID != " .$vid. "
-                   AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")";
+$sql            = "SELECT COUNT(VID) AS total_videos FROM video" .$sql_at. " channel = '" .$video['channel']. "' AND VID != " .$vid;
 $rsc            = $conn->execute($sql);
 $total_related  = $rsc->fields['total_videos'];
 if ( $total_related > 32 ) {
@@ -194,10 +193,12 @@ $pagination     = new Pagination(8, 'p_related_videos_' .$video['VID']. '_');
 $limit          = $pagination->getLimit($total_related);
 $sql            = "SELECT VID, title, duration, addtime, rate, likes, dislikes, viewnumber, type, thumb, thumbs, hd,thumb_img FROM video
                    WHERE active = '1' AND channel = '" .$video['channel']. "' AND VID != " .$vid. "
-                   AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")
-                   ORDER BY addtime DESC LIMIT " .$limit;
+                   ORDER BY addtime DESC LIMIT " .($limit*3);
 $rs             = $conn->execute($sql);
 $videos         = $rs->getrows();
+shuffle($videos);
+$videos = array_slice($videos,0,$limit);
+
 $page_link      = $pagination->getPagination('video');
 
 $sql            = "SELECT COUNT(CID) AS total_comments FROM video_comments WHERE VID = " .$vid. " AND status = '1'";

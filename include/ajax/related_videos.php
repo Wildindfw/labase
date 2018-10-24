@@ -19,8 +19,13 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
     if ( $move == 'prev' ) {
         $page   = ( $page < 1 ) ? 1: $page-1;
         $data['move']  = 'prev';
-    } else {
-        $page   = $page+1;
+    } else {   
+        
+        if(intval($page) === 1){  
+            $page   = 4;
+        }else{
+            $page   = $page+1;
+        }        
         $data['move']  = 'next';
     }
     
@@ -30,21 +35,21 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
     $video          = $video['0'];
     
     $sql_add        = NULL;
-    if ( $video['keyword'] ) {
-        $keywords   = explode(' ', $video['keyword']);
-        $sql_add   .= " OR (";
-        $sql_or     = NULL;
-        foreach ( $keywords as $keyword ) {
-            $sql_add .= $sql_or. " keyword LIKE '%" .mysql_real_escape_string($keyword). "%'";
-            $sql_or   = " OR ";
-        }
-        $sql_add   .= ")";
-    }
+//     if ( $video['keyword'] ) {
+//         $keywords   = explode(' ', $video['keyword']);
+//         $sql_add   .= " OR (";
+//         $sql_or     = NULL;
+//         foreach ( $keywords as $keyword ) {
+//             $sql_add .= $sql_or. " keyword LIKE '%" .mysql_real_escape_string($keyword). "%'";
+//             $sql_or   = " OR ";
+//         }
+//         $sql_add   .= ")";
+//     }
     
     $type			= ($config['show_private_videos'] == '1') ? '' : " AND type = 'public'";
     $sql            = "SELECT COUNT(VID) AS total_videos FROM video WHERE channel = '" .$video['channel']. "' AND VID != " .$vid. "
-					   AND active = '1'" .$type. "
-                       AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")";
+					   AND active = '1'" .$type;
+                       //AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")";
     $rs             = $conn->execute($sql);
     $total          = $rs->fields['total_videos'];
     if ( $total > 80 ) {
@@ -57,8 +62,15 @@ if ( isset($_POST['video_id']) && isset($_POST['move']) && isset($_POST['page'])
 	                   FROM video
                        WHERE channel = '" .intval($video['channel']). "' AND VID != " .$vid. "
 					   AND active = '1'" .$type. "
-                       AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")
                        ORDER BY addtime DESC LIMIT " .$limit;
+//     $sql            = "SELECT VID, title, duration, addtime, rate, likes, dislikes, viewnumber, type, thumb, thumbs, hd
+// 	                   FROM video
+//                        WHERE channel = '" .intval($video['channel']). "' AND VID != " .$vid. "
+// 					   AND active = '1'" .$type. "
+//                        AND ( title LIKE '%" .mysql_real_escape_string($video['title']). "%' " .$sql_add. ")
+//                        ORDER BY addtime DESC LIMIT " .$limit;
+    
+    
     $rs             = $conn->execute($sql);
     $videos         = $rs->getrows();
     $code           = array();

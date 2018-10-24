@@ -58,6 +58,10 @@
 			.video-dimensions{
 				height: 260px;
 			}
+      	}      	
+      	.adv_count_down{ 
+      		position: absolute; right: 10px;top: 10px; background: #000000; color: #FFFFFF;
+      		padding:5px 15px;font-size:14px;
       	}
 	</style>
 {/literal}
@@ -65,7 +69,8 @@
 <script type="text/javascript" src="{$relative_tpl}/js/ckplayer/ckplayer.js"></script>
 <div class="video-container">
 	<div id="video" class="vidvid" style="width: 100%;"></div>
-	
+	<div id="video_adv" style="background: #000000;">		
+	</div>
 	<script type="text/javascript">
 		var videoObject = {ldelim}
 		container: '#video', //容器的ID或className

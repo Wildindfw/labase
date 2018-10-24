@@ -50,7 +50,7 @@
     <script type="text/javascript" src="{$relative_tpl}/js/jquery.avs-0.2.js"></script>	
     <script type="text/javascript" src="{$relative_tpl}/js/adv.js?v=5.0"></script>
 	{if $view && !$video.embed_code}
-		<script src="{$base_url}/media/player/videojs/video-js-events.js"></script>			
+		<!--<script src="{$base_url}/media/player/videojs/video-js-events.js"></script>-->			
 	{/if}
 	{if $g_signin == '1' || $fb_signin == '1'}
 		<script type="text/javascript" src="{$relative_tpl}/js/jquery.load-apis.js"></script>	

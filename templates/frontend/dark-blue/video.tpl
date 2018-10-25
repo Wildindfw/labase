@@ -380,8 +380,7 @@ $( document ).ready(function() {
 								{$videos[i].viewnumber} {if $videos[i].viewnumber == '1'}{t c='global.view'}{else}{t c='global.views'}{/if}
 							</div>
 							<div class="video-added pull-right">
-								{insert name=time_range assign=addtime time=$recent_videos[i].addtime}
-								{$addtime}
+								
 							</div>
 							<div class="clearfix"></div>
 

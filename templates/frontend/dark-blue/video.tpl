@@ -82,6 +82,7 @@ $( document ).ready(function() {
 					<div>
 						{include file='video_vplayer.tpl'}
 					</div>
+					{include file='ads_text.tpl'}
 				</div>
 				<div class="col-md-4" style="padding: 0;">
 					<div class="well " style="padding: 0;margin: 0;">

@@ -82,6 +82,9 @@
 
 	<div class="row">
 		<div class="col-md-9 col-sm-8">
+			<div class="row">
+				{include file='ads_text.tpl'}
+			</div>
             {if $viewed_videos}
 			<div class="row" id="sort_viewtime_orw">
 				

@@ -63,6 +63,8 @@ class Upload{
           $data['file_path'] = '';
         }
     }
+    
+    //$data = $_FILES['file']['tmp_name'];
     header('Content-type: application/json');
     echo json_encode($data);
   }
@@ -74,7 +76,7 @@ class Upload{
     }
   }
 }
- 
+
 //实例化并获取系统变量传参
 $upload = new Upload($_FILES['file']['tmp_name'],$_POST['blob_num'],$_POST['total_blob_num'],$_POST['file_name']);
 //调用方法，返回结果

@@ -17,7 +17,7 @@
 
 
 #pop{background:#fff;width:180px; height:180px;font-size:12px;position:fixed;right:0;bottom:0;z-index:100}
-#pop img{width:180px;height:180px;border:none;}
+#pop img{max-width:180px;max-height:180px;border:none;}
 #popHead{line-height:32px;background:#f6f0f3;border-bottom:;font-size:12px;padding:0 0 0 10px;}
 #popHead h2{font-size:14px;color:#666;line-height:30px;height:30px;display:none}
 #popHead #popClose{position:absolute;right:-4px;top:2px;color:red;font-weight:bold;display:inline-block;padding:0 5px;}
@@ -25,7 +25,7 @@
 
 
 #popl{background:#fff;width:180px; height:180px;font-size:12px;position:fixed;left:0;bottom:0;z-index:100}
-#popl img{width:180px;height:180px;border:none;}
+#popl img{max-width:180px;max-height:180px;border:none;}
 #poplHead{line-height:32px;background:#f6f0f3;border-bottom:;font-size:12px;padding:0 0 0 10px;}
 #poplHead h2{font-size:14px;color:#666;line-height:30px;height:30px;display:none}
 #poplHead #poplClose{position:absolute;right:-4px;top:2px;color:red;font-weight:bold;display:inline-block;padding:0 5px;}

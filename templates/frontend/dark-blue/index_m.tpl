@@ -82,7 +82,7 @@
 
 	<div class="row">
 		<div class="col-md-9 col-sm-8">
-			<div class="row">
+			<div class="row" style="margin: 0;">
 				{include file='ads_text.tpl'}
 			</div>
             {if $viewed_videos}

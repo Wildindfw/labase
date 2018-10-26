@@ -165,66 +165,50 @@
     </div>
 </div>
 
-<div class="fixediv1 leftadv" style="display:none">
-    <a href="#" target="_blank">
-    	<a href="http://ooo88w.com/" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/88w180X180.gif" />
-    </a>
+<div class="fixediv1 leftadv" style="display:none">    
+    {insert name=adv assign=fixed group='fixed_left_1'}
+		{if $fixed}{$fixed}{/if}
     <a class="close" href="javascript:void(0);">
     	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
     </a>
 </div>
 <div class="fixediv2 leftadv" style="display:none">
-    <a href="#" target="_blank">
-    	<img src="{$relative_tpl}/img/advertise.jpg" />
-    </a>
+    {insert name=adv assign=fixed group='fixed_left_2'}
+		{if $fixed}{$fixed}{/if}
     <a class="close" href="javascript:void(0);">
     	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
     </a>
 </div>
-<div class="fixediv1 rightadv" style="display:none">
-    <a href="#"  target="_blank">
-    	<a href="http://ooo88w.com/" target="_blank" rel="nofollow"><img src="http://v.medialaba.com:2280/ad/88w180X180.gif" />
+<div class="fixediv3 leftadv" style="display:none;">
+    {insert name=adv assign=fixed group='fixed_left_3'}
+		{if $fixed}{$fixed}{/if}
+    <a class="close" href="javascript:void(0);">
+    	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
     </a>
+</div>
+
+
+<div class="fixediv1 rightadv" style="display:none">
+    {insert name=adv assign=fixed group='fixed_right_1'}
+		{if $fixed}{$fixed}{/if}
     <a class="close" href="javascript:void(0);">
     	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px"/>
     </a>
 </div>
 <div class="fixediv2 rightadv" style="display:none">
-    <a href="#" target="_blank">
-    	<img src="{$relative_tpl}/img/advertise.jpg" />
-    </a>
+    {insert name=adv assign=fixed group='fixed_right_2'}
+		{if $fixed}{$fixed}{/if}
     <a class="close" href="javascript:void(0);">
     	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
     </a>
 </div>
-<!-- left corner begin-->
-<div id="popl" style="display:none;">
-    <div id="poplHead">
-        <a id="poplClose" title="关闭">
-        	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
-        </a>
-        <h2></h2>
-    </div>
-    <div id="poplContent">
-        <a href="#" target="_blank">
-        	<img src="{$relative_tpl}/img/advertise.jpg" />
-        </a>
-    </div>
-</div>
-<!-- left corner end-->
 <!-- right corner begin-->
-<div id="pop" style="display:none;">
-    <div id="popHead">
-        <a id="popClose" title="关闭">
-        	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
-        </a>
-        <h2></h2>
-    </div>
-    <div id="popContent">
-        <a href="#" target="_blank">
-        	<img src="{$relative_tpl}/img/advertise.jpg" />
-        </a>
-    </div>
+<div class="fixediv3 rightadv" style="display:none;">
+    {insert name=adv assign=fixed group='fixed_right_3'}
+		{if $fixed}{$fixed}{/if}
+    <a class="close" href="javascript:void(0);">
+    	<img src="{$relative_tpl}/img/close.png" style="width:24px;height:24px" />
+    </a>
 </div>
 
 <div class="top-nav" style="position: relative;">

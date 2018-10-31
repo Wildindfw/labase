@@ -115,6 +115,11 @@ if ( isset($_POST['video_upload_started']) ) {
 		    ."";
             log_conversion($config['LOG_DIR']. '/' .$video_id. '.log', $cmd);
             $lg = $config['LOG_DIR']. '/' .$video_id. '.log2';
+            
+            echo "nohup nice -n $cmd $lg 2> /dev/null & echo $!";
+            exit;
+            
+            
             run_in_background($cmd.' > '.$lg);
 
             $duration    = get_video_duration($vdo_path, $video_id);

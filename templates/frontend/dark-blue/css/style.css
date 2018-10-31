@@ -154,6 +154,7 @@ body, button, input {
 
 .thumb-overlay {
 	position: relative;
+	background: url(../img/loading.gif) center no-repeat;
 }
 
 .hd-icon {

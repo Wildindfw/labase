@@ -32,25 +32,55 @@ $( document ).ready(function() {
 </style>
 {/literal}
 <link href="{$relative_tpl}/css/video_m.css" rel="stylesheet">
-<script type="text/javascript" src="{$relative_tpl}/js/jquery.video-0.2.js"></script>
-<script type="text/javascript" src="{$relative_tpl}/js/jquery.voting-video-pc.js"></script>
+<!--<script type="text/javascript" src="{$relative_tpl}/js/jquery.video-0.2.js"></script>
+<script type="text/javascript" src="{$relative_tpl}/js/jquery.voting-video-pc.js"></script>-->
 
 <div class="container">
 
 	<div class="well ad-body">
 		<p class="ad-title">{t c='global.sponsors'}</p>
+		{insert name=adv assign=adv_a1 group='index_top_a1'}
+		{if $adv_a1}{$adv_a1}{/if}
+		{insert name=adv assign=adv_a2 group='index_top_a2'}
+		{if $adv_a2}{$adv_a2}{/if}
+		{insert name=adv assign=adv_a3 group='index_top_a3'}
+		{if $adv_a3}{$adv_a3}{/if}
+		{insert name=adv assign=adv_a4 group='index_top_a4'}
+		{if $adv_a4}{$adv_a4}{/if}
+		{insert name=adv assign=adv_a5 group='index_top_a5'}
+		{if $adv_a5}{$adv_a5}{/if}
+		{insert name=adv assign=adv_a6 group='index_top_a6'}
+		{if $adv_a6}{$adv_a6}{/if}
+		{insert name=adv assign=adv_a7 group='index_top_a7'}
+		{if $adv_a7}{$adv_a7}{/if}
+		{insert name=adv assign=adv_a8 group='index_top_a8'}
+		{if $adv_a8}{$adv_a8}{/if}
+		{insert name=adv assign=adv_a9 group='index_top_a9'}
+		{if $adv_a9}{$adv_a9}{/if}
+		{insert name=adv assign=adv_a10 group='index_top_a10'}
+		{if $adv_a10}{$adv_a10}{/if}
 		{insert name=adv assign=adv_a group='index_top_a'}
 		{if $adv_a}{$adv_a}{/if}
 		{insert name=adv assign=adv_b group='index_top_b'}
 		{if $adv_b}{$adv_b}{/if}
+		{insert name=adv assign=adv group='index_top'}
+		{if $adv}{$adv}{/if}
 		{insert name=adv assign=adv_c group='index_top_c'}
 		{if $adv_c}{$adv_c}{/if}
 		{insert name=adv assign=adv_d group='index_top_d'}
 		{if $adv_d}{$adv_d}{/if}
 		{insert name=adv assign=adv_e group='index_top_e'}
 		{if $adv_e}{$adv_e}{/if}
-		{insert name=adv assign=adv group='index_top'}
-		{if $adv}{$adv}{/if}
+		{insert name=adv assign=adv_e1 group='index_top_e1'}
+		{if $adv_e1}{$adv_e1}{/if}
+		{insert name=adv assign=adv_e2 group='index_top_e2'}
+		{if $adv_e2}{$adv_e2}{/if}
+		{insert name=adv assign=adv_e3 group='index_top_e3'}
+		{if $adv_e3}{$adv_e3}{/if}
+		{insert name=adv assign=adv_e4 group='index_top_e4'}
+		{if $adv_e4}{$adv_e4}{/if}
+		{insert name=adv assign=adv_e5 group='index_top_e5'}
+		{if $adv_e5}{$adv_e5}{/if}
 	</div>
 
 	<div class="row">
@@ -86,7 +116,7 @@ $( document ).ready(function() {
 				</div>
 				<div class="col-md-4" style="padding: 0;">
 					<div class="well " style="padding: 0;margin: 0;">
-						{insert name=adv assign=adv group='video_right_m'}
+						{insert name=adv assign=adv group='video_right'}
 						{if $adv}{$adv}{/if}
 					</div>					
 				</div>

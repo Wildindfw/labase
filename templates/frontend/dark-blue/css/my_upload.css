@@ -17,6 +17,7 @@
     color: red;
     font-size: 18px;
     left:0;
+    overflow: hidden;
 }
 
 #finish {

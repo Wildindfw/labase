@@ -1,3 +1,15 @@
+function loadCss(src){
+    var cssTag = document.getElementById('loadCss');
+    var head = document.getElementsByTagName('head').item(0);
+    if(cssTag) head.removeChild(cssTag);
+    css = document.createElement('link');
+    css.href = src;
+    css.rel = 'stylesheet';
+    css.type = 'text/css';
+    css.id = 'loadCss';
+    head.appendChild(css);
+}
+
 function jsnull() {
 	return
 }
@@ -5,14 +17,19 @@ var player=null;
 var dtime=null;
 $(document).ready(function($) {
 			
-//		if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
-//			yhVideo();
-//			return false;
-//		}		
+		if(false && /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
+			loadCss("/media/player/video/video.css");
+			$("head").append('<script type="text/javascript" src="/media/player/video/video.min.js"></script>');
+			$("head").append('<script type="text/javascript" src="/media/player/video/videojs-contrib-hls.js"></script>');
+			yhVideo();
+			return false;
+		}		
 
 		
 		if($(window).width() < 600){
-			getPlayerAdv();
+			getPlayerAdv(function(){
+				player = new ckplayer(videoObject);
+			});
 		}else{
 			player = new ckplayer(videoObject);
 		}
@@ -55,6 +72,32 @@ function yhVideo(){
 		Adv:{}
 	};	
 	
+	getPlayerAdv(function(){
+		
+		var w = $(window).width(),h = w/16*9;
+		
+		var playUrl = videoObject.video[0][0];
+	   
+		
+		$("#video").append(`<video id="roomVideo1" class="video-js vjs-big-play-centered" controls preload="none" ><source id="source" src="${playUrl}" type="application/x-mpegURL"></video>`);
+	
+	
+		var myPlayer = videojs('roomVideo1',{
+			autoplay:false,
+	        height:h, 
+			width:w
+	  	});
+	   
+	   
+	   console.log(videoObject.video)
+	   //$("#adv_count_down").text('('+ti+'s)');
+	   
+	   //playUrl  = "http://videocdn2.quweikm.com:8091/20180801/TJKO2HY366/index.m3u8";
+	   myPlayer.src(playUrl);
+	   
+	});
+	
+	return false;
 	
 	//getPlayerAdv();
 	
@@ -80,7 +123,6 @@ function yhVideo(){
 	
 	var myPlayer = videojs('roomVideo1',{
 		autoplay:false,
-        //poster: "封面",
         height:h, 
 		width:w
   },function(){
@@ -118,7 +160,7 @@ function yhVideo(){
    });
 }
 
-function getPlayerAdv(){
+function getPlayerAdv(fn){
 				
 		
 		var w = $(window).width(),h = w/16*9;
@@ -151,8 +193,11 @@ function getPlayerAdv(){
 						ti--;
 						if(ti < 0){
 							clearInterval(aaa);
-							$("#video_adv").remove();
-							player = new ckplayer(videoObject);
+							$("#video_adv").hide();
+							if(fn && $.isFunction(fn)){
+								fn();
+							}
+							//player = new ckplayer(videoObject);
 						}
 					},1000);					
 				}

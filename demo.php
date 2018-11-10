@@ -1,5 +1,15 @@
 <?php
-phpinfo();
+
+define('_VALID', true);
+require 'include/config.php';
+require 'include/function_global.php';
+require 'include/function_smarty.php';
+
+$smarty->display('demo_video.tpl');
+
+$smarty->gzip_encode();
+
+// phpinfo();
 exit;
 function memory_usage() {
     $memory	 = ( ! function_exists('memory_get_usage')) ? '0' : round(memory_get_usage()/1024/1024, 2).'MB';
@@ -58,4 +68,17 @@ function videos(){
     
 }
 
-videos();
+function video(){
+    
+    define('_VALID', true);
+    require 'include/config.php';
+    require 'include/function_global.php';
+    require 'include/function_smarty.php';
+    require 'classes/pagination.class.php';
+    
+    $smarty->display('demo_video.tpl');
+   
+    $smarty->gzip_encode();
+}
+
+video();

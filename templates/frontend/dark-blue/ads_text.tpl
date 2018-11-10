@@ -50,7 +50,7 @@
 	$(function(){
 		
 		var tt = $("#adjson").text();		
-		tt = tt.replace(/\s*/g,"");
+		tt = tt.replace(/\s*/g,"").replace("},]","}]");
 		if(tt.length > 10){
 			try{
 				var ads = $.parseJSON(tt);		

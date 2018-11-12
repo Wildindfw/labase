@@ -19,7 +19,15 @@ if ( $conn->Affected_Rows() == 1 ) {
 	$user = $user[0];
 	foreach ($user as $key=>$value) {	
 		$response[$key] = $value;
-	}		
+	}	
+	
+	if($response['vip_deadline']){
+	    $response['vip_deadline_format'] = date("Y-m-d",$response['vip_deadline']);
+	}
+	if($response['vip_start_time']){
+	    $response['vip_start_time_format'] = date("Y-m-d",$response['vip_start_time']);
+	}
+	
 	$response['status'] = 1;
 }
 

@@ -33,6 +33,17 @@
 				</div>
 				<div class="clearfix"></div>
 				<div class="m-t-10"></div>				
+				<label class="col-lg-3 control-label">VIP视频</label>
+				<div class="col-lg-9">
+					<div class="radio p-t-9">
+						<input id="edit-is_vip1" type="radio" name="is_vip" value="1" class="radio-enabled">
+						<label for="edit-is_vip1">是</label>
+						<input id="edit-is_vip2" type="radio" name="is_vip" value="2" class="radio-disabled">
+						<label for="edit-is_vip2">否</label>												
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="m-t-10"></div>				
 				<label class="col-lg-3 control-label">Type</label>
 				<div class="col-lg-9">
 					<div class="radio p-t-9">

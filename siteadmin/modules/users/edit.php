@@ -48,6 +48,32 @@ if ( !$errors ) {
         $account_status     = $filter->get('account_status');
         $emailverified      = $filter->get('emailverified');
         
+        $vip_level      = $filter->get('vip_level');
+        $vip_deadline      = $filter->get('vip_deadline');
+        $vip_start_time      = $filter->get('vip_start_time');
+        
+        
+        $vip_sql = '';
+//         //判断是否添加过期日期
+//         if($vip_deadline){
+//             //日期转时间戳
+//             $deadline = strtotime($vip_deadline."23:59:59");
+//             if(!empty($deadline)){                
+//                 $vip_deadline = $deadline;                
+//                 if(empty($vip_start_time)){
+//                     $vip_start_time =  time();
+//                 }   
+//                 $vip_level = '试用';
+//                 $vip_sql = "vip_level = '" .mysql_real_escape_string($vip_level). "', vip_start_time = '" .mysql_real_escape_string($vip_start_time). "', vip_deadline = '" .mysql_real_escape_string($vip_deadline). "',";
+               
+//             }
+            
+//         }
+        
+       
+        
+        
+        
         if ( $email == '' ) {
             $errors[] = 'Email field cannot be blank!';
         } elseif ( !$valid->email($email) ) {
@@ -142,6 +168,7 @@ if ( !$errors ) {
                                       fav_book = '" .mysql_real_escape_string($fav_books). "', website = '" .mysql_real_escape_string($website). "',
                                       video_viewed = '" .mysql_real_escape_string($video_viewed). "', profile_viewed = '" .mysql_real_escape_string($profile_viewed). "',
                                       watched_video = '" .mysql_real_escape_string($watched_video). "', emailverified = '" .mysql_real_escape_string($emailverified). "',
+                                       .$vip_sql.
                                       account_status = '" .mysql_real_escape_string($account_status). "'" .$sql_add. " WHERE UID = '" .mysql_real_escape_string($UID). "' LIMIT 1";
             $conn->execute($sql); 
             if ( mysql_affected_rows() == 1 || $photo_new ) {

@@ -12,6 +12,7 @@
 			<li><a href="#tab2">Personal</a></li>
 			<li><a href="#tab3">Location</a></li>
 			<li><a href="#tab4">Profile</a></li>
+			<li><a href="#tab5">Vip</a></li>
 		</ul>
 
 		<div class="tab-content m-0">
@@ -238,6 +239,29 @@
 
 				</div>			
 			</div>
+			
+			<div class="tab-pane" id="tab5">
+				<div class="row form-row">	
+					<label class="col-lg-3 control-label">VIP等级</label>
+					<div class="col-lg-9">
+						<input id="edit-vip_level" name="vip_level" type="text"  class="form-control" disabled="disabled" readonly="readonly">						
+					</div>
+					<div class="clearfix"></div>
+					<label class="col-lg-3 control-label">VIP开始时间</label>
+					<div class="col-lg-9">
+						<input id="edit-vip_start_time" name="vip_start_time" type="text"  class="form-control" disabled="disabled" readonly="readonly">							
+					</div>
+					<div class="clearfix"></div>
+					<label class="col-lg-3 control-label">VIP过期时间</label>
+					<div class="col-lg-9">
+						<input id="edit-vip_deadline" name="vip_deadline" type="text" value="" class="form-control">
+					</div>
+										
+					
+				</div>
+			</div>
+			
+		
 		</div>
 
 

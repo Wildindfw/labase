@@ -24,7 +24,10 @@ $(document).ready(function($) {
 			yhVideo();
 			return false;
 		}		
-
+		
+		if(videoObject.uvip == "1"){
+			videoObject.advertisements = "";
+		}
 		
 		if($(window).width() < 600){
 			getPlayerAdv(function(){
@@ -169,6 +172,14 @@ function getPlayerAdv(fn){
 			width:w,
 			height:h
 		});	
+		
+		if(videoObject.uvip == "1"){
+			if(fn && $.isFunction(fn)){
+				fn();
+			}
+			$("#video_adv").hide();
+			return false;
+		}
 				
 		$.ajax({
 			type:"get",

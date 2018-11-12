@@ -71,6 +71,15 @@ var lang_delete_game_ask = "{t c='game.delete_confirm'}";
 			</div>
 			<div class="col-xs-12 col-sm-7 m-b-15">
 				<ul class="list-unstyled m-b-0">
+					{if isset($user.vip_level) && $user.vip_level != ''}
+						<li>VIP等级: <span class="text-white">{$user.vip_level}</span></li>
+					{/if}
+					{if isset($user.vip_start_time) && $user.vip_start_time != '0'}
+						<li>VIP开始: <span class="text-white">{$user.vip_start_time_format}</span></li>
+					{/if}
+					{if isset($user.vip_deadline) && $user.vip_deadline != '0'}
+						<li>VIP到期: <span class="text-white">{$user.vip_deadline_format}</span></li>
+					{/if}
 					<li>{t c='user.popularity'}: <span class="text-white">{$user.popularity} {if $user.popularity == '1'}{t c='global.point'}{else}{t c='global.points'}{/if}</span></li>
 					<li>{t c='user.activity'}: <span class="text-white">{$user.points} {if $user.points == '1'}{t c='global.point'}{else}{t c='global.points'}{/if}</span></li>
 					{insert name=age assign=age bdate=$user.bdate}

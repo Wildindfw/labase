@@ -249,6 +249,7 @@ body, button, input {
 	-moz-box-shadow:    1px 1px 0px 0px rgba(0, 0, 0, 0.15);
 	box-shadow:         1px 1px 0px 0px rgba(0, 0, 0, 0.15);
 }
+.hd-text-vip{ right: 35px; background-color: red; color: #ded5d5;}
 
 .video-title {
 	font-size: 16px;

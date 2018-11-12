@@ -66,7 +66,7 @@ if ( isset($_POST['item_id']) && isset($_POST['vote']) ) {
 				
             $sql            = "UPDATE signup SET rate = " .$rate. ", likes = " .$likes. ", dislikes = " .$dislikes. " WHERE UID = " .$user_id. " LIMIT 1";
 			
-            $data['debug'] = $sql;
+            //$data['debug'] = $sql;
             $conn->execute($sql);
 			
             if ( $config['rating'] == 'user' ) {

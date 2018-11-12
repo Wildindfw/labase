@@ -191,7 +191,7 @@ if ( $total_related > 32 ) {
 }
 $pagination     = new Pagination(8, 'p_related_videos_' .$video['VID']. '_');
 $limit          = $pagination->getLimit($total_related);
-$sql            = "SELECT VID, title, duration, addtime, rate, likes, dislikes, viewnumber, type, thumb, thumbs, hd,thumb_img FROM video
+$sql            = "SELECT VID, title,is_vip, duration, addtime, rate, likes, dislikes, viewnumber, type, thumb, thumbs, hd,thumb_img FROM video
                    WHERE active = '1' AND channel = '" .$video['channel']. "' AND VID != " .$vid. "
                    ORDER BY addtime DESC LIMIT " .($limit*3);
 $rs             = $conn->execute($sql);
@@ -242,6 +242,24 @@ if ($new_permisions['watch_normal_videos'] == 0) {
 	}
 
 }
+
+//不是vip视频都能看
+if(empty($video['is_vip']) || $video['is_vip'] == 2){
+    $smarty->assign('videoplay',true);
+}else if($_SESSION['vip'] == true){
+    //vip会员且vip视频 可以看
+    $smarty->assign('videoplay',true);
+}else{
+    
+    $sql        = "SELECT * FROM vip ";
+    $rs         = $conn->execute($sql);
+    $vips     = $rs->getrows();
+    $smarty->assign('vips',$vips);
+    
+    $smarty->assign('videoplay',false);
+}
+
+$smarty->assign('uvip',$_SESSION['vip']);
 
 $categories     = get_categories();
 $smarty->assign('categories',$categories);

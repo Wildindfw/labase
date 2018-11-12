@@ -47,7 +47,7 @@
 	<!-- BEGIN SIDEBAR FOOTER WIDGET -->
 	<div class="footer-widget">
 		<div class="pull-left">
-			Powered by <a href="http://www.adultvideoscript.com" target="_blank">AVS</a>
+			
 		</div>	
 		<div class="pull-right">
 			<a href="logout.php"><i class="fa fa-power-off"></i></a>

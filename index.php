@@ -15,7 +15,7 @@ if ( $config['show_private_videos'] == '0' ) {
 
 $sql_add       .= $sql_delim. " active = '1'";  
 
-$sql            = "SELECT VID, title, duration, addtime, thumb, thumbs, viewnumber, rate, likes, dislikes, type, hd,thumb_img
+$sql            = "SELECT VID, title,is_vip, duration, addtime, thumb, thumbs, viewnumber, rate, likes, dislikes, type, hd,thumb_img
                    FROM video" .$sql_add. " ORDER BY viewtime DESC LIMIT " .$config['watched_per_page'];
 $rs             = $conn->execute($sql);
 $viewed_videos  = $rs->getrows();

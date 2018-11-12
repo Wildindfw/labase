@@ -1,12 +1,12 @@
 			<li class="{if $active_menu == 'users'}open{/if}">
 				<a href="javascript:;">
 					<i class="fa fa-users"></i>
-					<span class="title">Users</span>
+					<span class="title">用户</span>
 					<span class="arrow {if $active_menu == 'users'}open{/if}"></span>					
 				</a>
 				<ul class="sub-menu" {if $active_menu == 'users'}style="overflow: hidden; display: block;"{/if}>
 					<li class="{if $sub_menu == 'manage-users'}open active{/if}">
-						<a href="users.php?m=all&all=1">Manage Users</a>
+						<a href="users.php?m=all&all=1">管理用户</a>
 					</li>
 					<li class="{if $sub_menu == 'user-requests'}open active{/if}">
 						<a href="javascript:;"><span class="title">Requests</span><span class="arrow {if $sub_menu == 'user-requests'}open{/if}"></span></a>
@@ -27,6 +27,10 @@
 						<ul class="sub-menu" {if $sub_menu == 'add-users'}style="overflow: hidden; display: block;"{/if}>
 							<li class="{if $module == 'add'}active{/if}"><a href="users.php?m=add">Add User</a></li>		
 						</ul>						
-					</li>					
+					</li>	
+					<li class="{if $sub_menu == 'vip'}open active{/if}">
+						<a href="vip.php">VIP设置</a>
+					</li>
 				</ul>
 			</li>
+			

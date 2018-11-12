@@ -32,6 +32,8 @@ $viewnumber     = trim($data['viewnumber']);
 $active         = trim($data['active']);
 $server			= trim($data['server']);
 
+$is_vip			= trim($data['is_vip']);
+
 settype($vid, 'integer');
 settype($viewnumber, 'integer');
 settype($likes, 'integer');
@@ -48,7 +50,8 @@ $sql = "UPDATE video SET title = '" .mysql_real_escape_string($title). "', descr
 						 be_rated = '" .mysql_real_escape_string($be_rated). "', embed = '" .mysql_real_escape_string($embed). "',
 						 likes = '" .mysql_real_escape_string($likes). "', dislikes = '" .mysql_real_escape_string($dislikes). "', 
 						 rate = '" .mysql_real_escape_string($rate). "', viewnumber = '" .mysql_real_escape_string($viewnumber). "',
-						 active  = '" .mysql_real_escape_string($active). "', server = '".mysql_real_escape_string($server)."'
+						 active  = '" .mysql_real_escape_string($active). "', server = '".mysql_real_escape_string($server)."',
+                        is_vip  = '" .mysql_real_escape_string($is_vip). "'
 		WHERE VID = '" .mysql_real_escape_string($vid). "' LIMIT 1";
 $conn->execute($sql);
 $response['status'] = 1;

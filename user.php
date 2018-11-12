@@ -21,6 +21,19 @@ if ( $conn->Affected_Rows() != 1 ) {
 }
 $user   = $rs->getrows();
 $user   = $user['0'];
+
+if($user['vip_deadline']){
+    $user['vip_deadline_format'] = date("Y-m-d",$user['vip_deadline']);
+}
+if($user['vip_start_time']){
+    $user['vip_start_time_format'] = date("Y-m-d",$user['vip_start_time']);
+}
+if($user['vip_deadline'] && $user['vip_deadline'] > time()){
+    $_SESSION['vip'] = true;
+}else{
+    $_SESSION['vip'] = false;
+}
+
 $uid    = intval($user['UID']);
 
 $sql        = "SELECT * FROM users_online WHERE UID = " .$uid. " AND online > " .(time()-300). " LIMIT 1";

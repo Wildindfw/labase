@@ -471,6 +471,8 @@ $(document).ready(function(){
 						$('#editModalDialog').css('margin-left',Math.floor(modal_ml)+'px');
 					}
 					
+					$('input:radio[name="is_vip"]').filter('[value="' + response.is_vip + '"]').attr('checked', true);
+					
 				} else {
 					Messenger().post({
 						message: 'Video <b>ID ' + video_id + '</b>: Failed getting video details!',
@@ -510,6 +512,7 @@ $(document).ready(function(){
 					$('#edit-dislikes').val(response.dislikes);
 					$('#edit-viewnumber').val(response.viewnumber);
 					
+					$('input:radio[name="is_vip"]').filter('[value="' + response.is_vip + '"]').attr('checked', true);
 				} else {
 					Messenger().post({
 						message: 'Video <b>ID ' + video_id + '</b>: Failed getting video details!',
@@ -541,7 +544,8 @@ $(document).ready(function(){
 				server		: $('#edit-server').val(),
 				likes		: $('#edit-likes').val(),
 				dislikes	: $('#edit-dislikes').val(),
-				viewnumber	: $('#edit-viewnumber').val()
+				viewnumber	: $('#edit-viewnumber').val(),
+				is_vip		: $('input[name="is_vip"]:checked').val()
 			};
 			var jsonVideoData = JSON.stringify(videoData);
 			

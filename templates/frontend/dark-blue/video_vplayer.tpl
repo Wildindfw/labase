@@ -65,7 +65,7 @@
       	}
 	</style>
 {/literal}
-
+{if $videoplay}
 <script type="text/javascript" src="{$relative_tpl}/js/ckplayer/ckplayer.js"></script>
 <div class="video-container">
 	<div id="video" class="vidvid" style="width: 100%;"></div>
@@ -79,6 +79,7 @@
 		autoplay:true,
 		poster:'material/poster.jpg',//封面图片
 		advertisements:'/ckplayer.php',//广告动态获取
+		uvip:'{$uvip}',//广告动态获取
 		video: [//视频地址列表形式
 			{section name=i loop=$video.files}
 				['{$video.files[i].file}', '', '{if $video.files[i].height == 1080}蓝光SD{/if}{if $video.files[i].height == 720}超清{/if}{if $video.files[i].height == 480}高清{/if}{if $video.files[i].height == 360}标清{/if}{if $video.files[i].height == 360}普清{/if}', 0],
@@ -89,4 +90,28 @@
 	</script>
 	<script type="text/javascript" src="{$relative_tpl}/js/my_video.js"></script>
 </div>
+{else}
+<div class="video-container" style="background: #000; padding: 10px 0;">	
+	<div class="video-plan">
+		<div class="video-plan-name">看完整版并解锁全站视频</div>
+		<ul class="video-plan-box">			
+			{section name=i loop=$vips}
+			<li class="data-collapse can-click"> 
+				<div class="clearfix" >
+					<a href="#"> 
+						<div class="plan-time"> <span class="plan-txt">{$vips[i].name}</span></div> 
+						<div class="plan-price"> 
+							<span class="price-ntd">{$vips[i].cost}</span> 
+						</div> 
+					</a>
+				</div> 				 
+			</li>
+			{/section}			
+			<li class="can-click" style="padding:0"> 
+				<a class="btn-blue btn-light" hhref="/recharge.php">加入VIP免费看</a> 
+			</li>
+		</ul>
+	</div>		
+</div>
+{/if}
 {/if}

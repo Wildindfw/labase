@@ -4,7 +4,10 @@
 <script src="{$relative_tpl}/assets/plugins/jquery-1.8.3.min.js" type="text/javascript"></script> 
 <script src="{$relative_tpl}/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script> 
 <script src="{$relative_tpl}/assets/plugins/boostrapv3/js/bootstrap.min.js" type="text/javascript"></script> 
-<script src="{$relative_tpl}/assets/plugins/breakpoints.js" type="text/javascript"></script> 
+<script src="{$relative_tpl}/assets/plugins/breakpoints.js" type="text/javascript"></script>
+<script src="{$relative_tpl}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<link href="{$relative_tpl}/assets/plugins/bootstrap-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css" />
+
 <script src="{$relative_tpl}/assets/plugins/jquery-unveil/jquery.unveil.min.js" type="text/javascript"></script> 
 <script src="{$relative_tpl}/assets/plugins/jquery-block-ui/jqueryblockui.js" type="text/javascript"></script> 
 <!-- END CORE JS FRAMEWORK --> 
@@ -134,6 +137,9 @@
 	<script> $('#email-content').wysihtml5(); </script>
 {elseif $sub_menu == 'add-users'}
 	<script src="{$relative_tpl}/assets/js/admin/jquery.file-box.js" type="text/javascript"></script>
+{elseif $sub_menu == 'vip'}
+	<script src="{$relative_tpl}/assets/plugins/jquery-notifications/js/messenger.min.js" type="text/javascript"></script>
+	<script src="{$relative_tpl}/assets/js/admin/jquery.vip.js" type="text/javascript"></script>
 {elseif $active_menu == 'channels'}
 	<script src="{$relative_tpl}/assets/plugins/jquery-notifications/js/messenger.min.js" type="text/javascript"></script>
 	<script src="{$relative_tpl}/assets/plugins/jquery-notifications/js/messenger-theme-future.js" type="text/javascript"></script>

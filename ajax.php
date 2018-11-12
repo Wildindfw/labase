@@ -162,7 +162,9 @@ $modules_allowed    = array(
 	'admin_check_csvimport' => 1,
 	'admin_delete_source' => 1,
 	'admin_status_source' => 1,
-	'admin_aembedder_cron' => 1
+	'admin_aembedder_cron' => 1,
+    'admin_save_vip' => 1,
+    'admin_delete_vip' => 1
 );
 
 if ( isset($modules_allowed[$module]) && $modules_allowed[$module] === 1 ) {

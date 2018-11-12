@@ -51,6 +51,31 @@ $fav_book        = trim($data['fav_book']);
 $turnon          = trim($data['turnon']);
 $turnoff         = trim($data['turnoff']);
 
+$vip_level         = trim($data['vip_level']);
+$vip_deadline         = trim($data['vip_deadline']);
+$vip_start_time         = trim($data['vip_start_time']);
+
+
+
+$vip_sql = '';
+//判断是否添加过期日期
+if($vip_deadline){
+    //日期转时间戳
+    $deadline = strtotime($vip_deadline."23:59:59");    
+    if(!empty($deadline)){
+        $vip_deadline = $deadline;
+        
+        if(empty($vip_start_time) || $vip_start_time == '1970-01-01'){
+            $vip_start_time = time();
+        }else{
+            $vip_start_time = strtotime($vip_start_time."23:59:59");   
+        }
+        $vip_level = '试用';
+        $vip_sql = " vip_level = '" .mysql_real_escape_string($vip_level). "', vip_start_time = '" .mysql_real_escape_string($vip_start_time). "', vip_deadline = '" .mysql_real_escape_string($vip_deadline). "',";
+        
+    }    
+}
+
 settype($uid, 'integer');
 settype($profile_viewed, 'integer');
 settype($video_viewed, 'integer');
@@ -83,9 +108,11 @@ $sql = "UPDATE signup SET fname = '" .mysql_real_escape_string($fname). "', lnam
 						  video_viewed = '" .mysql_real_escape_string($video_viewed). "', profile_viewed = '" .mysql_real_escape_string($profile_viewed). "',
 						  watched_video = '" .mysql_real_escape_string($watched_video). "', emailverified = '" .mysql_real_escape_string($emailverified). "',
 						  likes = '" .mysql_real_escape_string($likes). "', dislikes = '" .mysql_real_escape_string($dislikes). "', 
-						  rate = '" .mysql_real_escape_string($rate). "', account_status = '" .mysql_real_escape_string($account_status). "'" 
+                        ".$vip_sql."			  
+                        rate = '" .mysql_real_escape_string($rate). "', account_status = '" .mysql_real_escape_string($account_status). "'" 
 						  .$sql_add. " WHERE UID = '" .mysql_real_escape_string($uid). "' LIMIT 1";
 
+						  
 $conn->execute($sql);
 $response['status'] = 1;
 echo json_encode($response);

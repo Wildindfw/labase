@@ -823,7 +823,11 @@ $(document).ready(function(){
 					$('#edit-fav_music').val(response.fav_music);					
 					$('#edit-fav_book').val(response.fav_book);
 					$('#edit-turnon').val(response.turnon);					
-					$('#edit-turnoff').val(response.turnoff);					
+					$('#edit-turnoff').val(response.turnoff);
+					
+					$('#edit-vip_level').val(response.vip_level);
+					$('#edit-vip_start_time').val(response.vip_start_time_format);
+					$('#edit-vip_deadline').val(response.vip_deadline_format);
 		
 					//Adjust margin left to integer value - Center
 					var modal_ml = parseInt(($(window).width()-$('#editModalDialog').width())/2);					
@@ -947,8 +951,14 @@ $(document).ready(function(){
 				fav_music		 : $('#edit-fav_music').val().replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t"),
 				fav_book		 : $('#edit-fav_book').val().replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t"),
 				turnon		     : $('#edit-turnon').val().replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t"),
-				turnoff 		 : $('#edit-turnoff').val().replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t")
+				turnoff 		 : $('#edit-turnoff').val().replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t"),
+				
+				vip_level	 : $('#edit-vip_level').val(),
+				vip_start_time		 : $('#edit-vip_start_time').val(),
+				vip_deadline		 : $('#edit-vip_deadline').val()
 			};
+			
+			
 			var jsonUserData = JSON.stringify(userData);
 			
 			$.post(base_url + '/ajax/admin_save_user', { data: jsonUserData },
@@ -1040,6 +1050,8 @@ $(document).ready(function(){
 	validateNumber('#edit-video_viewed',0);
 	validateNumber('#edit-watched_video',0);
 	validatePassword('#edit-password','#edit-password_confirm',4);
+	
+	$("#edit-vip_deadline").datepicker({format: 'yyyy-mm-dd'});
 	
 	$(window).on('resize', function(){	
 		if ($(window).width()>768) {

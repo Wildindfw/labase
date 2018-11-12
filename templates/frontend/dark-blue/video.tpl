@@ -399,6 +399,7 @@ $( document ).ready(function() {
 								<div class="thumb-overlay">
 									<img src="{if $videos[i].thumb_img !='0'}{insert name=thumb_path}/{$videos[i].thumb_img}{else}{insert name=thumb_path vid=$videos[i].VID}/{$videos[i].thumb}.jpg{/if}" title="{$videos[i].title|escape:'html'}" alt="{$videos[i].title|escape:'html'}" {if $videos[i].thumb_img == '0'}id="rotate_{$videos[i].VID}_{$videos[i].thumbs}_{$videos[i].thumb}_viewed"{/if}  class="img-responsive {if $videos[i].type == 'private'}img-private{/if}"/>
 									{if $videos[i].type == 'private'}<div class="label-private">{t c='global.PRIVATE'}</div>{/if}
+									{if $videos[i].is_vip==1}<div class="hd-text-icon hd-text-vip">VIP</div>{/if}
 									{if $videos[i].hd==1}<div class="hd-text-icon">HD</div>{/if}
 									<div class="duration">
 										{insert name=duration assign=duration duration=$videos[i].duration}

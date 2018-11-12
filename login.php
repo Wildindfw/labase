@@ -44,6 +44,13 @@ if ( isset($_POST['submit_login']) ) {
                 $_SESSION['gender']         = $user['0']['gender'];
                 $_SESSION['message']        = 'Welcome ' .$username. '!';
                 
+                //判断vip是否过期
+                if($user['0']['vip_deadline'] && $user['0']['vip_deadline'] > time() ){
+                    $_SESSION['vip'] = true;
+                }else{
+                    $_SESSION['vip'] = false;
+                }
+                
                 if (isset($_POST['login_remember']) && $config['user_remember'] == '1') {
                     Remember::set($username, $user['0']['pwd']);
                 }

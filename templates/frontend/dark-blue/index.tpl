@@ -118,6 +118,7 @@
 							<div class="thumb-overlay">
 								<img src="{if $viewed_videos[i].thumb_img == '0'}{insert name=thumb_path vid=$viewed_videos[i].VID}/{$viewed_videos[i].thumb}.jpg{else}{insert name=thumb_path }/{$viewed_videos[i].thumb_img}{/if}" title="{$viewed_videos[i].title|escape:'html'}" alt="{$viewed_videos[i].title|escape:'html'}" {if $viewed_videos[i].thumb_img == '0'}id="rotate_{$viewed_videos[i].VID}_{$viewed_videos[i].thumbs}_{$viewed_videos[i].thumb}_viewed"{/if}   class="img-responsive {if $viewed_videos[i].type == 'private'}img-private{/if}"/>
 								{if $viewed_videos[i].type == 'private'}<div class="label-private">{t c='global.PRIVATE'}</div>{/if}
+								{if $viewed_videos[i].is_vip==1}<div class="hd-text-icon hd-text-vip">VIP</div>{/if}
 								{if $viewed_videos[i].hd==1}<div class="hd-text-icon">HD</div>{/if}
 								<div class="duration">
 									{insert name=duration assign=duration duration=$viewed_videos[i].duration}
@@ -226,6 +227,7 @@
 							<div class="thumb-overlay">
 								<img src="{if $recent_videos[i].thumb_img !='0'}{insert name=thumb_path}/{$recent_videos[i].thumb_img}{else}{insert name=thumb_path vid=$recent_videos[i].VID}/{$recent_videos[i].thumb}.jpg{/if}" title="{$recent_videos[i].title|escape:'html'}" alt="{$recent_videos[i].title|escape:'html'}"  {if $recent_videos[i].thumb_img == '0'}id="rotate_{$recent_videos[i].VID}_{$recent_videos[i].thumbs}_{$recent_videos[i].thumb}_viewed"{/if}   class="img-responsive {if $recent_videos[i].type == 'private'}{/if}"/>
 								{if $recent_videos[i].type == 'private'}<div class="label-private">{t c='global.PRIVATE'}</div>{/if}
+								{if $viewed_videos[i].is_vip==1}<div class="hd-text-icon hd-text-vip">VIP</div>{/if}
 								{if $recent_videos[i].hd==1}<div class="hd-text-icon">HD</div>{/if}
 								<div class="duration">
 									{insert name=duration assign=duration duration=$recent_videos[i].duration}

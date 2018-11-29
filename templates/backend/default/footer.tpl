@@ -54,7 +54,12 @@
 {elseif $module == 'advs'}
 	<script src="{$relative_tpl}/assets/js/admin/jquery.banner-ads.js" type="text/javascript"></script>
 {elseif $module == 'advadd' || $module == 'advedit'}
+	
+	<script src="{$relative_tpl}/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js" type="text/javascript"></script>
+<link href="{$relative_tpl}/assets/plugins/bootstrap-datepicker/css/datepicker.min.css" rel="stylesheet" type="text/css" />
+	
 	<script src="{$relative_tpl}/assets/js/admin/jquery.banner-add.js" type="text/javascript"></script>
+	
 {elseif $module == 'advpause'}
 	<script src="{$relative_tpl}/assets/js/admin/jquery.pause-ads.js" type="text/javascript"></script>	
 {elseif $module == 'advpauseadd' || $module == 'advpauseedit'}

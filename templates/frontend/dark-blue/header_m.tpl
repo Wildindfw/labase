@@ -49,6 +49,7 @@
 	var g_cid = "{$g_cid}";
 	var signup_section = false;
 	var relative = "{$relative}";
+	var signup_uid = "{$uid}";
 	</script>
 
 <script src="{$relative_tpl}/js/jquery-1.11.1.min.js"></script>	

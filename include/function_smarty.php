@@ -194,12 +194,14 @@ function insert_adv( $options )
     if ( $conn->Affected_Rows() == 1 ) {
         $adv_rotate = $rs->fields['advgrp_rotate'];
         $adv_group  = $rs->fields['advgrp_id'];
+        
+        $where = " AND adv_starttime < '".time()."' AND adv_exptime > '".time()."' ";
         if ( $adv_rotate == '1' ) {
             $sql    = "SELECT adv_id, adv_text FROM adv WHERE adv_group = " .intval($adv_group). "
-                       AND adv_status = '1' ORDER BY adv_addtime ASC";
+                       AND adv_status = '1' ".$where." ORDER BY adv_addtime ASC";
         } else {
             $sql    = "SELECT adv_id, adv_text FROM adv WHERE adv_group = " .intval($adv_group). "
-                       AND adv_status = '1' LIMIT 1";
+                       AND adv_status = '1' ".$where." LIMIT 1";
         }
         
         $rs     = $conn->execute($sql);

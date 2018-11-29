@@ -64,19 +64,48 @@
 											</div>
 											<div class="clearfix"></div>
 										</div>
+										
+										
+							<div class="form-group">
+								<label class="col-lg-4 control-label">上架时间</label>
+								<div class="col-lg-8">
+									<input id="adv_starttime" name="adv_starttime" type="text" value="{$adv.adv_starttime_format}" class="form-control">
+								</div>	
+								<div class="clearfix"></div>
+							</div>
+							<div class="form-group">
+								<label class="col-lg-4 control-label">下架时间</label>
+								<div class="col-lg-8">
+									<input id="adv_exptime" name="adv_exptime" type="text" value="{$adv.adv_exptime_format}" class="form-control">
+								</div>	
+								<div class="clearfix"></div>
+							</div>
+										
 										<div class="form-group">
 											<label class="col-lg-4 control-label">Code</label>
 											<div class="col-lg-8">
 												<textarea name="adv_text" rows="6" class="form-control {if $err.adv_text}error{/if}" style="resize: vertical">{$adv.adv_text}</textarea>
 											</div>	
 											<div class="clearfix"></div>
-										</div>									
+										</div>
+										
+										<div class="form-group">
+											<label class="col-lg-4 control-label">备注</label>
+											<div class="col-lg-8">
+												<textarea name="adv_desc" rows="6" class="form-control {if $err.adv_desc}error{/if}" style="resize: vertical">{$adv.adv_desc}</textarea>
+											</div>	
+											<div class="clearfix"></div>
+										</div>
+										
+										
+										
 									</div>
 								</div>							
 							</div>
 							<div class="form-actions">
 								<div class="pull-right">
 									<input type="submit" name="adv_edit" value="Save" class="btn btn-success btn-cons">
+									<input type="hidden" id="adv_id" value="{$adv.adv_id}" />
 									<a href="index.php" class="btn btn-white btn-cons">Cancel</a>
 								</div>
 							</div>

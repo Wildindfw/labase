@@ -261,6 +261,9 @@ if(empty($video['is_vip']) || $video['is_vip'] == 2){
 
 $smarty->assign('uvip',$_SESSION['vip']);
 
+$smarty->assign('uid',$_SESSION['uid']);
+
+
 $categories     = get_categories();
 $smarty->assign('categories',$categories);
 $smarty->assign('errors',$errors);

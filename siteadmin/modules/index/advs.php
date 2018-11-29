@@ -62,5 +62,15 @@ function constructQuery()
     return $query;
 }
 
+foreach ($advs as $k => $adv) {
+    if($adv['adv_starttime']){
+        $advs[$k]['adv_starttime_format'] = date("Y-m-d",$adv['adv_starttime']);
+    }
+    
+    if($adv['adv_exptime']){
+        $advs[$k]['adv_exptime_format'] = date("Y-m-d",$adv['adv_exptime']);
+    }
+}
+
 $smarty->assign('advs', $advs);
 ?>

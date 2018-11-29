@@ -108,7 +108,11 @@
 			</li>
 			{/section}			
 			<li class="can-click" style="padding:0"> 
-				<a class="btn-blue btn-light" hhref="/recharge.php">加入VIP免费看</a> 
+				{if $uid}
+				<a class="btn-blue btn-light" href="/recharge.php">加入VIP免费看</a> 
+				{else}
+				<a class="btn-blue btn-light" href="/signup">加入VIP免费看</a> 
+				{/if}
 			</li>
 		</ul>
 	</div>		

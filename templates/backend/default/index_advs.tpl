@@ -57,7 +57,8 @@
 													<th>NAME</th>
 													<th>GROUP</th>
 													<th>VIEWS</th>
-													<th>STATUS</th>												
+													<th>STATUS</th>	
+													<th>下架时间</th>
 													<th>ACTION</th>
 												</tr>
 											</thead>
@@ -76,6 +77,9 @@
 													</td>
 													<td class="{if $smarty.section.i.index mod 2 == 0}grey{else}white{/if}">
 														{if $advs[i].adv_status == '1'}<span class="text-success">Active</span>{else}<span class="text-danger">Inactive</span>{/if}
+													</td>
+													<td class="{if $smarty.section.i.index mod 2 == 0}grey{else}white{/if}">
+														{$advs[i].adv_exptime_format}
 													</td>
 													<td class="action {if $smarty.section.i.index mod 2 == 0}grey{else}white{/if}">
 														<div>

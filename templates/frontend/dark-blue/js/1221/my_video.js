@@ -17,17 +17,14 @@ var player=null;
 var dtime=null;
 $(document).ready(function($) {
 			
-		if(/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
+		if(false && /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)){
 			loadCss("/media/player/video/video.css");
 			$("head").append('<script type="text/javascript" src="/media/player/video/video.min.js"></script>');
 			$("head").append('<script type="text/javascript" src="/media/player/video/videojs-contrib-hls.js"></script>');
 			yhVideo();
 			return false;
 		}		
-		
-		if(videoObject.uvip == "1"){
-			videoObject.advertisements = "";
-		}
+
 		
 		if($(window).width() < 600){
 			getPlayerAdv(function(){
@@ -45,23 +42,6 @@ $(document).ready(function($) {
 		}
 		dtime=window.setTimeout('timejian()',1000);
 });
-
-function loadedHandler(){
-	if(videoObject.videoplay == ""){
-		//播放器加载后会调用该函数
-		//监听播放时间,addListener是监听函数，需要传递二个参数，'time'是监听属性，这里是监听时间，timeHandler是监听接受的函数
-		player.addListener('time', timeHandler); 
-	}
-	
-	
-}
-function timeHandler(t){
-	if(t > 60 &&  $("#page_video").length > 0){
-		$("#page_video").remove();
-		$("#vip_video").show();
-	}
-}
-
 function timejian(){
 	var time=parseInt($('.djs').html());
 	if(time>0){
@@ -84,6 +64,7 @@ var MacPlayer = {
 	Adv:{}
 };
 
+function loadedHandler(){}
 
 function yhVideo(){
 	
@@ -188,14 +169,6 @@ function getPlayerAdv(fn){
 			width:w,
 			height:h
 		});	
-		
-		if(videoObject.uvip == "1"){
-			if(fn && $.isFunction(fn)){
-				fn();
-			}
-			$("#video_adv").hide();
-			return false;
-		}
 				
 		$.ajax({
 			type:"get",
@@ -221,10 +194,6 @@ function getPlayerAdv(fn){
 						if(ti < 0){
 							clearInterval(aaa);
 							$("#video_adv").hide();
-							$("#video").css({
-								width:w,
-								height:h
-							});	
 							if(fn && $.isFunction(fn)){
 								fn();
 							}

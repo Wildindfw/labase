@@ -65,9 +65,9 @@
       	}
 	</style>
 {/literal}
-{if $videoplay}
+
 <script type="text/javascript" src="{$relative_tpl}/js/ckplayer/ckplayer.js"></script>
-<div class="video-container">
+<div class="video-container" id="page_video">
 	<div id="video" class="vidvid" style="width: 100%;"></div>
 	<div id="video_adv" style="background: #000000;">		
 	</div>
@@ -75,10 +75,12 @@
 		var videoObject = {ldelim}
 		container: '#video', //容器的ID或className
 		variable: 'player',//播放函数名称
+		loaded:'loadedHandler',//监听播放器加载成功
 		flashplayer:false,
 		autoplay:true,
 		poster:'material/poster.jpg',//封面图片
 		advertisements:'/ckplayer.php',//广告动态获取
+		videoplay:"{$videoplay}",
 		uvip:'{$uvip}',//广告动态获取
 		video: [//视频地址列表形式
 			{section name=i loop=$video.files}
@@ -90,8 +92,8 @@
 	</script>
 	<script type="text/javascript" src="{$relative_tpl}/js/my_video.js"></script>
 </div>
-{else}
-<div class="video-container" style="background: #000; padding: 10px 0;">	
+
+<div id="vip_video" class="video-container" style="background: #000; padding: 10px 0;display: none;">	
 	<div class="video-plan">
 		<div class="video-plan-name">看完整版并解锁全站视频</div>
 		<ul class="video-plan-box">			
@@ -117,5 +119,5 @@
 		</ul>
 	</div>		
 </div>
-{/if}
+
 {/if}
